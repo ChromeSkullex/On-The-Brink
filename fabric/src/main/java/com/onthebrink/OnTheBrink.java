@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class OnTheBrink implements ModInitializer {
-	public static final String MOD_ID = "on-the-brink";
+	public static final String MOD_ID = "onthebrink";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
