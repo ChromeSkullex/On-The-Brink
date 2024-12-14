@@ -15,6 +15,7 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 
-    public static final RegistryObject<Item> RUBY = ITEMS.register("ruby", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> RUBY = ITEMS.register("ruby", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).tab(ModCreativeModeTabs.LEARNING_TAB)));
+    public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).tab(ModCreativeModeTabs.LEARNING_TAB)));
 
 }

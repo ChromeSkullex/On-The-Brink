@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "onthebrink:sapphire_block"
+    }
+  ],
+  "result": {
+    "item": "onthebrink:sapphire",
+    "count": 9
+  }
+}

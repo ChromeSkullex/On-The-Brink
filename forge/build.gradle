@@ -14,7 +14,6 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    //id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 apply plugin: 'net.minecraftforge.gradle'

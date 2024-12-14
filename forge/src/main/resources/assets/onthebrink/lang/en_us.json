@@ -1,3 +1,10 @@
 {
-  "item.onthebrink.ruby": "Ruby"
+  "item.onthebrink.ruby": "Ruby",
+  "item.onthebrink.sapphire": "Sapphire",
+  "block.onthebrink.ruby_block": "Ruby Block",
+  "block.onthebrink.sapphire_block": "Sapphire Block",
+  "block.onthebrink.ruby_ore": "Ruby Ore",
+  "block.onthebrink.sapphire_ore": "Sapphire Ore",
+
+  "itemGroup.learningtab": "Larissa's test items :)"
 }
