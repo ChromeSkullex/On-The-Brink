@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "onthebrink:woods_cycad_log",
+    "onthebrink:woods_cycad_wood",
+    "onthebrink:stripped_woods_cycad_log",
+    "onthebrink:stripped_woods_cycad_wood"
+  ]
+}

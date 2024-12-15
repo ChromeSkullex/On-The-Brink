@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "onthebrink:block/woods_cycad_slab"
+    },
+    "type=double": {
+      "model": "onthebrink:block/woods_cycad_planks"
+    },
+    "type=top": {
+      "model": "onthebrink:block/woods_cycad_slab_top"
+    }
+  }
+}

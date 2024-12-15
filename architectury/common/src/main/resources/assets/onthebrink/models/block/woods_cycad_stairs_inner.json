@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "onthebrink:block/woods_cycad_planks",
+    "top": "onthebrink:block/woods_cycad_planks",
+    "side": "onthebrink:block/woods_cycad_planks"
+  }
+}
