@@ -1,6 +1,7 @@
 package com.onthebrink.forge;
 
 import com.onthebrink.block.ModBlocks;
+import com.onthebrink.client.ClientInit;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -25,10 +26,6 @@ public final class OnTheBrinkForge {
         OnTheBrink.init();
     }
     private void clientSetup (final FMLClientSetupEvent event) {
-        setBlockRenderTypes();
-    }
-
-    public void setBlockRenderTypes(){
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WOODS_CYCAD_SPROUT.get(), RenderType.cutout());
+        ClientInit.later();
     }
 }

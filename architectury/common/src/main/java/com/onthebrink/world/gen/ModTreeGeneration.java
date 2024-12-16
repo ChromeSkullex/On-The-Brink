@@ -12,12 +12,18 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 public class ModTreeGeneration {
 
     public static void generateTrees() {
+        if (ModPlacedFeatures.WOODS_CYCAD_PLACED == null) {
+            System.err.println("WOODS_CYCAD_PLACED is not registered yet!");
+        }
+
         BiomeModifications.addProperties((context) -> {
             ResourceLocation biomeName = context.getKey();
 
             // Add conditions to check for specific biome types or names
-            return biomeName.getPath().contains("plains"); // Adjust to your needs
-        }, (context, mutable) -> {
+            return biomeName.getPath().contains("plains");
+        }
+        , (context, mutable) -> {
+
             mutable.getGenerationProperties().addFeature(
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     ModPlacedFeatures.WOODS_CYCAD_PLACED

@@ -1,11 +1,10 @@
 package com.onthebrink.fabric;
 
-import com.onthebrink.block.ModBlocks;
+import com.onthebrink.client.ClientInit;
+import com.onthebrink.misc.MiscRegistryFabric;
 import net.fabricmc.api.ModInitializer;
 
 import com.onthebrink.OnTheBrink;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.minecraft.client.renderer.RenderType;
 
 public final class OnTheBrinkFabric implements ModInitializer {
     @Override
@@ -14,13 +13,13 @@ public final class OnTheBrinkFabric implements ModInitializer {
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
 
+        // This is necessary because fabric doesnt have an api for dealing with TrunkPlacers and FoliagePlacers
+        // So we need to use mixins
+        MiscRegistryFabric.registerTreePlacerTypes();
+
         // Run our common setup.
         OnTheBrink.init();
 
-        setBlockRenderTypes();
+        ClientInit.later();
     }
-    public void setBlockRenderTypes(){
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WOODS_CYCAD_SPROUT.get(), RenderType.cutout());
-    }
-
 }

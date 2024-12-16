@@ -1,6 +1,17 @@
+plugins {
+    id 'dev.architectury.loom' version '1.7-SNAPSHOT'
+}
+
+
 architectury {
     common rootProject.enabled_platforms.split(',')
 }
+
+ext {
+    parchment_mc_version = "1.18.2"
+    parchment_date = "2022.05.22"
+}
+
 
 dependencies {
     // We depend on Fabric Loader here to use the Fabric @Environment annotations,
@@ -15,7 +26,20 @@ dependencies {
 
     mappings(loom.layered {
         officialMojangMappings()
-//        parchment("org.parchmentmc.data:parchment-$parchment_mc_version:$parchment_date@zip")
+        parchment("org.parchmentmc.data:parchment-$parchment_mc_version:$parchment_date@zip")
 //        addLayer(new FixGeckoLibSpec())
     })
 }
+
+repositories {
+    maven {
+        name = "Minecraft Maven"
+        url = "https://maven.minecraftforge.net"
+    }
+    maven {
+        name = "Fabric Maven"
+        url = "https://maven.fabricmc.net"
+    }
+    mavenCentral()
+}
+

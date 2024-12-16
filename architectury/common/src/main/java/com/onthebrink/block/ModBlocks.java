@@ -27,6 +27,8 @@ public class ModBlocks {
             .sound(SoundType.STONE)
     ), CreativeModeTab.TAB_MISC);
 
+    public static final RegistrySupplier<BushBlock> CHOCOLATE_COSMOS = registerBlock("chocolate_cosmos", () -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
+
     public static final RegistrySupplier<LeavesBlock> WOODS_CYCAD_LEAVES = registerBlock("woods_cycad_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<SaplingBlock> WOODS_CYCAD_SPROUT = registerBlock("woods_cycad_sprout", () -> new SaplingBlock(new WoodsCycadGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), CreativeModeTab.TAB_MISC);

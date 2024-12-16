@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.item.ModItems;
 import com.onthebrink.world.gen.ModTreeGeneration;
+import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import net.minecraft.client.renderer.RenderType;
 import org.slf4j.Logger;
 
@@ -16,9 +17,5 @@ public final class OnTheBrink  {
         ModBlocks.register();
         ModItems.register();
 //        LOGGER.info("Initializing On The Brink");
-
-        // Uncomment to generate placeholder trees in the plains biome
-        //ModTreeGeneration.generateTrees();
-
     }
 }
