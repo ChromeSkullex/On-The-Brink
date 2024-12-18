@@ -19,6 +19,6 @@ public class OnTheBrinkClient {
     }
 
     public static void init() {
-        registerEntityRenderer();
+
     }
 }

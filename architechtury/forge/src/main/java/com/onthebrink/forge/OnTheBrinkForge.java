@@ -1,5 +1,6 @@
 package com.onthebrink.forge;
 
+import com.onthebrink.client.ClientInit;
 import com.onthebrink.client.OnTheBrinkClient;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,12 +27,13 @@ public final class OnTheBrinkForge {
 
         // Client
         modEventBus.addListener(this::onClient);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> OnTheBrinkClient::init);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientInit::immediate);
 
 
     }
 
     public void onClient(FMLClientSetupEvent event) {
-        OnTheBrinkClient.init();
+
+        ClientInit.later();
     }
 }
