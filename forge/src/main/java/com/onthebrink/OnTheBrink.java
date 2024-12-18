@@ -1,10 +1,17 @@
 package com.onthebrink;
 
 import com.mojang.logging.LogUtils;
+import com.onthebrink.block.ModBlocks;
+import com.onthebrink.item.ModItems;
+import net.minecraft.client.gui.screens.inventory.CreativeInventoryListener;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.EventBus;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -29,11 +36,15 @@ public class OnTheBrink
     public OnTheBrink()
     {
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        modEventBus.addListener(this::setup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)

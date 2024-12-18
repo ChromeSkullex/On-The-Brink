@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "onthebrink:ruby_ore"
+  },
+  "result": "onthebrink:ruby",
+  "experience": 0.7,
+  "cookingtime": 200
+}
