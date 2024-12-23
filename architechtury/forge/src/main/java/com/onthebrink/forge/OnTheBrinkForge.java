@@ -1,7 +1,6 @@
 package com.onthebrink.forge;
 
 import com.onthebrink.client.ClientInit;
-import com.onthebrink.client.OnTheBrinkClient;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

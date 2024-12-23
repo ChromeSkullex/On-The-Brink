@@ -1,7 +1,6 @@
 package com.onthebrink.fabric.client;
 
 import com.onthebrink.client.ClientInit;
-import com.onthebrink.client.OnTheBrinkClient;
 import net.fabricmc.api.ClientModInitializer;
 
 public final class OnTheBrinkFabricClient implements ClientModInitializer {
