@@ -1,5 +1,8 @@
 package com.onthebrink.entity.animal.base;
 
+import com.onthebrink.entity.util.Gender;
+import dev.architectury.extensions.network.EntitySpawnExtension;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -28,12 +31,12 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
  * 2. Create shared goals
  * 3. Create Attributes: hunger, gender, traits, etc.
  * */
-public class AnimalBase extends TamableAnimal implements AnimalAnimatable<AnimalBase> {
+public class AnimalBase extends TamableAnimal implements AnimalAnimatable<AnimalBase>, EntitySpawnExtension {
 
-    // Data Accessors
+    // Variables
     private static final EntityDataAccessor<Integer> HUNGER = SynchedEntityData.defineId(AnimalBase.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HAPPINESS = SynchedEntityData.defineId(AnimalBase.class, EntityDataSerializers.INT);
-
+    private Gender gender = Gender.random(random);
 
     @Override
     protected void defineSynchedData() {
@@ -90,6 +93,11 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         entityData.set(HAPPINESS, happiness);
     }
 
+    // Gender
+    public Gender getGender(){
+        return gender == null ? Gender.MALE : this.gender;
+    }
+
 
 
 
@@ -115,11 +123,24 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         if (heldItem.is(Items.STICK)){
             String hungerText = "Hunger: " + getHunger();
             String happinessText = " Happiness: " + getHappiness();
-            player.displayClientMessage(new TranslatableComponent(hungerText + happinessText), true);
+            String genderText = "Gender: " + getGender();
+            player.displayClientMessage(new TranslatableComponent(hungerText + happinessText + genderText), true);
 
             return InteractionResult.PASS;
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void saveAdditionalSpawnData(FriendlyByteBuf friendlyByteBuf) {
+        friendlyByteBuf.writeBoolean(getGender() == Gender.MALE);
+    }
+
+    @Override
+    public void loadAdditionalSpawnData(FriendlyByteBuf friendlyByteBuf) {
+        gender = friendlyByteBuf.readBoolean() ? Gender.MALE : Gender.FEMALE;
+
+
     }
 }
 

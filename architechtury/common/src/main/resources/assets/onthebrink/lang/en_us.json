@@ -1,4 +1,8 @@
 {
   "item.onthebrink.penguin_temp_spawn_egg": "Penguin Temp Spawn Egg",
-  "item.onthebrink.animal_book": "Animal Book"
+  "item.onthebrink.animal_book": "Animal Book",
+  "book.onthebrink.gender": "Gender: %s",
+  "book.onthebrink.gender.female": "Female",
+  "book.onthebrink.gender.male": "Male",
+  "book.onthebrink.gender.desc": "Gender of the Animal"
 }
