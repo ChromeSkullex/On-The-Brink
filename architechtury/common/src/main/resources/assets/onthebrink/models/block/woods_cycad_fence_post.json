@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "onthebrink:block/woods_cycad_planks"
+  }
+}

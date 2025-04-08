@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "onthebrink:block/stripped_woods_cycad_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "onthebrink:block/stripped_woods_cycad_log"
+    },
+    "axis=z": {
+      "model": "onthebrink:block/stripped_woods_cycad_log_horizontal",
+      "x": 90
+    }
+  }
+}
