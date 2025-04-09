@@ -1,11 +1,10 @@
-package com.onthebrink.entity.animal;
+package com.onthebrink.entity.animal.amphibious;
 
 import com.onthebrink.entity.ai.AnimalPanicGoal;
 import com.onthebrink.entity.ai.AnimalWanderGoal;
 import com.onthebrink.entity.animal.base.AnimalBase;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.level.Level;
 
 

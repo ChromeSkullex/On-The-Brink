@@ -38,7 +38,7 @@
                   ]
                 }
               ],
-              "name": "minecraft:woods_cycad_leaves"
+              "name": "onthebrink:woods_cycad_leaves"
             },
             {
               "type": "minecraft:item",
@@ -57,7 +57,7 @@
                   ]
                 }
               ],
-              "name": "minecraft:woods_cycad_sprout"
+              "name": "onthebrink:woods_cycad_sprout"
             }
           ]
         }
