@@ -1,5 +1,8 @@
 package com.onthebrink.entity;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.entity.animal.base.AnimalBase;
 import com.onthebrink.entity.util.AnimalDefinition;
@@ -10,9 +13,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 import static com.onthebrink.item.ModItems.registerSpawnEggs;
@@ -34,33 +36,37 @@ public class ModEntities {
 
     public static void register() {
         ENTITIES.register();
-        loadAnimalsFromFile(); // Load
+        loadJsonAnimals();
     }
 
 
-
-    // Loading from a readable file with the all the animals
-    private static void loadAnimalsFromFile() {
-        Yaml yaml = new Yaml();
-
-        try (InputStream input = ModEntities.class.getClassLoader().getResourceAsStream("assets/onthebrink/dictionaries/animals.yml")) {
+    private static void loadJsonAnimals(){
+        Gson obj = new Gson();
+        InputStream input = ModEntities.class.getClassLoader().getResourceAsStream("assets/onthebrink/data/animals.json");
+        try {
             if (input == null) {
-                OnTheBrink.LOGGER.error("animals.yml not found!");
+                OnTheBrink.LOGGER.error("Error loading entity file [NOT FOUND]");
                 return;
             }
 
-            List<Map<String, Object>> defs = yaml.load(input);
+            JsonObject root = obj.fromJson(new InputStreamReader(input), JsonObject.class);
+            JsonObject animalsRoot = root.getAsJsonObject("animals");
 
-            for (Map<String, Object> map : defs) {
+            for (Map.Entry<String, JsonElement> entry : animalsRoot.entrySet()) {
+                String key = entry.getKey();
+                OnTheBrink.LOGGER.info("{} Animals Root {}", key, entry );
+                JsonObject animalRoot = entry.getValue().getAsJsonObject();
+
                 AnimalDefinition def = new AnimalDefinition();
-                def.id = (String) map.get("id");
-                def.alias = (String) map.get("alias");
-                def.className = (String) map.get("className");
-                def.width = Float.parseFloat(map.get("width").toString());
-                def.height = Float.parseFloat(map.get("height").toString());
-                def.hp = Integer.parseInt(map.get("hp").toString());
-                def.primary_color = Integer.parseInt(map.get("primary_color").toString());
-                def.secondary_color = Integer.parseInt(map.get("secondary_color").toString());
+                def.id = key;
+                def.alias = animalRoot.get("alias").getAsString();
+                def.className = animalRoot.get("className").getAsString();
+                def.width = animalRoot.getAsJsonObject("size").get("width").getAsFloat();
+                def.height = animalRoot.getAsJsonObject("size").get("height").getAsFloat();
+                def.hp = animalRoot.get("hp").getAsInt();
+                def.primary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("primary").getAsString(),16);
+                def.secondary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("secondary").getAsString(),16);
+
 
 
                 OnTheBrink.LOGGER.info("Loading animal: {}", def.id);
@@ -77,12 +83,16 @@ public class ModEntities {
 
                 EntityAttributeRegistry.register(() -> (EntityType<? extends LivingEntity>) supplier.get(), AnimalBase::createMobAttributes);
                 registerSpawnEggs(def);
+
             }
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             OnTheBrink.LOGGER.error("Error loading entity file", e);
         }
+
     }
+
 
     private static EntityType.@NotNull EntityFactory<AnimalBase> getAnimalBaseEntityFactory(AnimalDefinition def) {
         Class<? extends AnimalBase> entityClass = def.getEntityClass();

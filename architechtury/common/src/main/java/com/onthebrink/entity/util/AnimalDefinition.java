@@ -14,7 +14,11 @@ public class AnimalDefinition {
 
     public Class<? extends AnimalBase> getEntityClass() {
         try {
-            return (Class<? extends AnimalBase>) Class.forName(className);
+            Class<?> animalClass = Class.forName(className);
+            if (!AnimalBase.class.isAssignableFrom(animalClass)){
+                throw new RuntimeException("Class " + className + " is not an instance of AnimalBase");
+            }
+            return animalClass.asSubclass(AnimalBase.class);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Failed to load entity class: " + className, e);
         }
