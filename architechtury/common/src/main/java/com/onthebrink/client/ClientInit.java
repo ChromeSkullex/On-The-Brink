@@ -5,6 +5,7 @@ import com.onthebrink.block.ModBlocks;
 import com.onthebrink.client.gui.OnTheBrinkScreen;
 import com.onthebrink.client.renderer.AnimalGeoRenderer;
 import com.onthebrink.entity.ModEntities;
+import com.onthebrink.entity.animal.base.AnimalBase;
 import com.onthebrink.item.ModItems;
 import com.onthebrink.world.gen.ModTreeGeneration;
 import dev.architectury.event.EventResult;
@@ -12,9 +13,13 @@ import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.common.InteractionEvent;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
+
+import java.util.Map;
 
 public class ClientInit {
 
@@ -29,8 +34,13 @@ public class ClientInit {
 
     }
     private static void registerEntityRenderer(){
-        EntityRendererRegistry.register(ModEntities.PENGUIN_TEMP, context -> new AnimalGeoRenderer<>(context, "penguin_temp"));
-
+        for (Map.Entry<String, RegistrySupplier<EntityType<AnimalBase>>> entry : ModEntities.REGISTERED_ENTITIES.entrySet()){
+            String id = entry.getKey();
+            RegistrySupplier<EntityType<AnimalBase>> supplier = entry.getValue();
+            EntityRendererRegistry.register(
+                    supplier,
+                    context -> new AnimalGeoRenderer<>(context, id));
+        }
     }
 
 

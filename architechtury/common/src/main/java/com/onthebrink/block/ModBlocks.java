@@ -20,13 +20,6 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.BLOCK_REGISTRY);
 
-    public static final RegistrySupplier<Block> RUBY_ORE = registerBlock("ruby_ore", () -> new Block(BlockBehaviour.Properties
-            .of(Material.STONE)
-            .strength(4f)
-            .requiresCorrectToolForDrops()
-            .sound(SoundType.STONE)
-    ), CreativeModeTab.TAB_MISC);
-
     public static final RegistrySupplier<BushBlock> CHOCOLATE_COSMOS = registerBlock("chocolate_cosmos", () -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<LeavesBlock> WOODS_CYCAD_LEAVES = registerBlock("woods_cycad_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), CreativeModeTab.TAB_MISC);
@@ -56,6 +49,7 @@ public class ModBlocks {
     public static final RegistrySupplier<StairBlock> WOODS_CYCAD_STAIRS = registerBlock("woods_cycad_stairs", () -> new StairBlock(ModBlocks.WOODS_CYCAD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<TrapDoorBlock> WOODS_CYCAD_TRAPDOOR = registerBlock("woods_cycad_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)), CreativeModeTab.TAB_MISC);
+
 
     public static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block, CreativeModeTab creativeModeTab) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
