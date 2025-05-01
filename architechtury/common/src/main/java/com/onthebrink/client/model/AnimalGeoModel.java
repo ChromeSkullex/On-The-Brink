@@ -16,7 +16,7 @@ public class AnimalGeoModel<T extends AnimalBase > extends AnimatedGeoModel<T> {
     public AnimalGeoModel(String modelName) {
         this.modelLocation = OnTheBrink.location("geo/entities/"+modelName+".geo.json");
         this.animationLocation = OnTheBrink.location("animations/"+modelName+".animation.json");
-        this.textureLocation = OnTheBrink.location("textures/entities/"+modelName+".png");
+        this.textureLocation = OnTheBrink.location("textures/entities/"+modelName+"/"+modelName+"_male.png");
     }
 
 

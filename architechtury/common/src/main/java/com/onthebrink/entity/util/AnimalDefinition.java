@@ -1,6 +1,8 @@
 package com.onthebrink.entity.util;
 
 import com.onthebrink.entity.animal.base.AnimalBase;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
 public class AnimalDefinition {
     public String id;
@@ -11,6 +13,14 @@ public class AnimalDefinition {
     public int hp;
     public int primary_color;
     public int secondary_color;
+    public Item spawnEggItem;
+    //    Textures
+    public ResourceLocation female_sleeping_texture;
+    public ResourceLocation female_texture;
+    public ResourceLocation male_sleeping_texture;
+    public ResourceLocation male_texture;
+    public ResourceLocation baby_texture;
+
 
     public Class<? extends AnimalBase> getEntityClass() {
         try {

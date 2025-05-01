@@ -10,6 +10,7 @@ import dev.architectury.registry.level.entity.EntityAttributeRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +23,7 @@ import static com.onthebrink.item.ModItems.registerSpawnEggs;
 public class ModEntities {
     private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.ENTITY_TYPE_REGISTRY);
     public static final Map<String, RegistrySupplier<EntityType<AnimalBase>>> REGISTERED_ENTITIES = new HashMap<>();
-
+    public static final Map<String, AnimalDefinition> DEFINITIONS = new HashMap<>();
     // Example hardcoded entries
 //    public static final RegistrySupplier<EntityType<PenguinTemp>> PENGUIN_TEMP = registerAnimal("penguin_temp", PenguinTemp::new, .5f, .5f);
 //    public static final RegistrySupplier<EntityType<AfricanPenguin>> AFRICAN_PENGUIN = registerAnimal("african_penguin", AfricanPenguin::new, .5f, .5f);
@@ -68,7 +69,6 @@ public class ModEntities {
                 def.secondary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("secondary").getAsString(),16);
 
 
-
                 OnTheBrink.LOGGER.info("Loading animal: {}", def.id);
 
                 EntityType.EntityFactory<AnimalBase> factory = getAnimalBaseEntityFactory(def);
@@ -80,9 +80,10 @@ public class ModEntities {
                 );
 
                 REGISTERED_ENTITIES.put(def.id, supplier);
+                DEFINITIONS.put(def.id, def);
 
                 EntityAttributeRegistry.register(() -> (EntityType<? extends LivingEntity>) supplier.get(), AnimalBase::createMobAttributes);
-                registerSpawnEggs(def);
+//                registerSpawnEggs(def);
 
             }
 

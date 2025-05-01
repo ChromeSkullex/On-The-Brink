@@ -21,8 +21,9 @@ public final class OnTheBrink  {
     }
 
     public static void init() {
-        ModBlocks.register();
-        ModItems.register();
         ModEntities.register();
+        ModBlocks.register();
+
+        ModItems.register();
     }
 }
