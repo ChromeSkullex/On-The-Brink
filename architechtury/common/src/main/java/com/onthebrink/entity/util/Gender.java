@@ -25,4 +25,20 @@ public enum Gender implements AnimalInfo{
     public Component getDescription() {
         return description;
     }
+
+    @Override
+    public Boolean getGenderBool() {
+        if (this == Gender.MALE){
+            return false;
+        }
+        else return this == Gender.FEMALE;
+    }
+    @Override
+    public Gender getGenderPop(Boolean gender) {
+        if (!gender){
+            return MALE;
+        }
+        else return FEMALE ;
+    }
+
 }
