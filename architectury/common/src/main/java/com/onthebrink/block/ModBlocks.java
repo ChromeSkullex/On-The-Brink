@@ -34,7 +34,7 @@ public class ModBlocks {
             .sound(SoundType.STONE)
     ), CreativeModeTab.TAB_MISC);
 
-    public static final RegistrySupplier<IronBarsBlock> CHAIN_LINK = registerBlock("chain_link", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)), CreativeModeTab.TAB_MISC);
+    public static final RegistrySupplier<IronBarsBlock> CHAIN_LINK = registerBlock("chain_link", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).sound(SoundType.CHAIN)), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<Block> WOODEN_CRATE = registerBlock("wooden_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), CreativeModeTab.TAB_MISC);
 
