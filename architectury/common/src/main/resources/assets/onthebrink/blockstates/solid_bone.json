@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "onthebrink:block/solid_bone",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "onthebrink:block/solid_bone"
+    },
+    "axis=z": {
+      "model": "onthebrink:block/solid_bone",
+      "x": 90
+    }
+  }
+}

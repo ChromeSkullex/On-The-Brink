@@ -2,6 +2,8 @@ package com.onthebrink.block;
 
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.custom.FlammableRotatedPillarBlock;
+import com.onthebrink.block.custom.GlassSpongeBlock;
+import com.onthebrink.block.custom.WetGlassSpongeBlock;
 import com.onthebrink.item.ModItems;
 import com.onthebrink.world.feature.tree.WoodsCycadGrower;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -13,12 +15,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.BLOCK_REGISTRY);
+
+    // REMINDER: When adding transparent blocks, update the renderer at the client/ClientInit file
 
     public static final RegistrySupplier<Block> RUBY_ORE = registerBlock("ruby_ore", () -> new Block(BlockBehaviour.Properties
             .of(Material.STONE)
@@ -26,6 +33,30 @@ public class ModBlocks {
             .requiresCorrectToolForDrops()
             .sound(SoundType.STONE)
     ), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<IronBarsBlock> CHAIN_LINK = registerBlock("chain_link", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<Block> WOODEN_CRATE = registerBlock("wooden_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<SpongeBlock> GLASS_SPONGE = registerBlock("glass_sponge", () -> new GlassSpongeBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<WetGlassSpongeBlock> WET_GLASS_SPONGE = registerBlock("wet_glass_sponge", () -> new WetGlassSpongeBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<SlabBlock> BONE_SLAB = registerBlock("bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<StairBlock> BONE_STAIRS = registerBlock("bone_stairs", () -> new StairBlock(Blocks.BONE_BLOCK.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<RotatedPillarBlock> SOLID_BONE = registerBlock("solid_bone", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<RotatedPillarBlock> CRACKED_SOLID_BONE = registerBlock("cracked_solid_bone", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<RotatedPillarBlock> CRACKED_BONE_BLOCK = registerBlock("cracked_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<WallBlock> BONE_WALL = registerBlock("bone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<GlowLichenBlock> BARNACLES = registerBlock("barnacles", () -> new GlowLichenBlock(BlockBehaviour.Properties.copy(Blocks.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(0)).noOcclusion().sound(SoundType.FUNGUS)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<SoulSandBlock> BROWN_MUD = registerBlock("brown_mud", () -> new SoulSandBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).sound(SoundType.WET_GRASS)), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<BushBlock> CHOCOLATE_COSMOS = registerBlock("chocolate_cosmos", () -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
 

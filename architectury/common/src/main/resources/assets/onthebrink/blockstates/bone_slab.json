@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "onthebrink:block/bone_slab"
+    },
+    "type=double": {
+      "model": "onthebrink:block/bone_slab_double"
+    },
+    "type=top": {
+      "model": "onthebrink:block/bone_slab_top"
+    }
+  }
+}
