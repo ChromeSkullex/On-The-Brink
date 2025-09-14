@@ -46,7 +46,7 @@ public class BarnaclesFeature extends Feature<BarnaclesFeatureConfiguration> {
         BlockPos pos = context.origin();
 
 
-        // Place a glowstone block
+        // place a glowstone block
         world.setBlock(pos, Blocks.GLOWSTONE.defaultBlockState(), 3);
         world.getChunk(pos).markPosForPostprocessing(pos);
 
@@ -67,12 +67,12 @@ public class BarnaclesFeature extends Feature<BarnaclesFeatureConfiguration> {
                     Direction.EAST, Direction.WEST);
         }
 
-        // Try placing at the origin
+        // try placing at the origin
         if (tryPlaceBarnacle(world, origin, random, config, directions)) {
             return true;
         }
 
-        // Search outward up to searchRange
+        // search outward up to searchRange
         for (Direction dir : directions) {
             BlockPos.MutableBlockPos mutablePos = origin.mutable();
             for (int i = 1; i <= config.searchRange(); i++) {
@@ -100,14 +100,14 @@ public class BarnaclesFeature extends Feature<BarnaclesFeatureConfiguration> {
 
         GlowLichenBlock barnaclesBlock = (GlowLichenBlock) ModBlocks.BARNACLES.get();
 
-        // Make a mutable copy to shuffle directions
+        // make a mutable copy to shuffle directions
         List<Direction> shuffled = new ArrayList<>(directions);
         Collections.shuffle(shuffled, random);
 
         for (Direction attachDir : shuffled) {
             BlockState adjacent = world.getBlockState(pos.relative(attachDir));
 
-            // ✅ Only attach to valid blocks
+            // only attach to valid blocks
             boolean canAttach = BarnaclesFeatureConfiguration.canBePlacedOn.stream()
                     .anyMatch(holder -> holder.value() == adjacent.getBlock());
 
@@ -115,7 +115,7 @@ public class BarnaclesFeature extends Feature<BarnaclesFeatureConfiguration> {
                 BlockState barnacleState = barnaclesBlock.defaultBlockState()
                         .setValue(GlowLichenBlock.getFaceProperty(attachDir), true);
 
-                // ✅ Waterlog if replacing water
+                // waterlog if replacing water
                 if (replacingWater && barnacleState.hasProperty(BlockStateProperties.WATERLOGGED)) {
                     barnacleState = barnacleState.setValue(BlockStateProperties.WATERLOGGED, true);
                 }
