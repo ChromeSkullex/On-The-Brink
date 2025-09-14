@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "onthebrink:block/chocolate_cosmos"
+    "layer0": "onthebrink:block/african_violet"
   }
 }

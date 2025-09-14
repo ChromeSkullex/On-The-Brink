@@ -2,6 +2,7 @@ package com.onthebrink.forge;
 
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.client.ClientInit;
+import com.onthebrink.world.feature.ModPlacedFeatures;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -24,6 +25,8 @@ public final class OnTheBrinkForge {
 
         // Run our common setup.
         OnTheBrink.init();
+
+        ModPlacedFeatures.register();
     }
     private void clientSetup (final FMLClientSetupEvent event) {
         ClientInit.later();

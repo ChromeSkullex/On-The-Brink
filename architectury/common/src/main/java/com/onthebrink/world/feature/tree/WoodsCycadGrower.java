@@ -1,6 +1,6 @@
 package com.onthebrink.world.feature.tree;
 
-import com.onthebrink.world.feature.ModConfiguredFeatures;
+import com.onthebrink.world.feature.configuration.ModConfiguredFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

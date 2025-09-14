@@ -27,12 +27,16 @@ public class ModBlocks {
 
     // REMINDER: When adding transparent blocks, update the renderer at the client/ClientInit file
 
+    /*
     public static final RegistrySupplier<Block> RUBY_ORE = registerBlock("ruby_ore", () -> new Block(BlockBehaviour.Properties
             .of(Material.STONE)
             .strength(4f)
             .requiresCorrectToolForDrops()
             .sound(SoundType.STONE)
     ), CreativeModeTab.TAB_MISC);
+     */
+
+    public static final RegistrySupplier<BushBlock> AFRICAN_VIOLET = registerBlock("african_violet", () -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
 
     public static final RegistrySupplier<IronBarsBlock> CHAIN_LINK = registerBlock("chain_link", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).sound(SoundType.CHAIN)), CreativeModeTab.TAB_MISC);
 

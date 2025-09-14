@@ -2,6 +2,7 @@
   "item.onthebrink.ruby": "Ruby",
   "block.onthebrink.ruby_ore": "Ruby Ore",
 
+  "block.onthebrink.african_violet": "African Violet",
   "block.onthebrink.chain_link": "Chain Link Fence",
   "block.onthebrink.wooden_crate": "Wooden Crate",
   "block.onthebrink.glass_sponge": "Glass Sponge",
@@ -14,7 +15,7 @@
   "block.onthebrink.solid_bone": "Solid Bone",
   "block.onthebrink.barnacles": "Barnacles",
   "block.onthebrink.brown_mud": "Brown Mud",
-  "block.onthebrink.chocolate_cosmos": "Chocolate Cosmos (WIP model)",
+  "block.onthebrink.chocolate_cosmos": "Chocolate Cosmos",
   "block.onthebrink.woods_cycad_leaves": "Wood's Cycad Leaves",
   "block.onthebrink.woods_cycad_sprout": "Wood's Cycad Sprout",
   "block.onthebrink.woods_cycad_log": "Wood's Cycad Log",

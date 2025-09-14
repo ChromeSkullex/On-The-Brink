@@ -1,0 +1,25 @@
+{
+  "woods_cycad": [
+    "minecraft:sparse_jungle",
+    "biomesoplenty:rocky_rainforest",
+    "biomesoplenty:sacred_springs"
+  ],
+  "african_violet": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ],
+  "chocolate_cosmos": [
+    "minecraft:meadow",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna"
+  ],
+  "barnacles_stony_shores": [
+    "minecraft:stony_shore"
+  ],
+  "barnacles_coral_reef": [
+    "minecraft:warm_ocean"
+  ],
+  "barnacles_swamp": [
+    "minecraft:swamp"
+  ]
+}
