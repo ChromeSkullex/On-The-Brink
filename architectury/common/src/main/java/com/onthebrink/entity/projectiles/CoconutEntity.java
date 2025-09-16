@@ -3,7 +3,7 @@ package com.onthebrink.entity.projectiles;
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.entity.ModEntities;
 import com.onthebrink.item.ModItems;
-import net.minecraft.core.Direction; // For manual bounce calculation
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource; // <-- Changed Import
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -73,7 +73,6 @@ public class CoconutEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
-        // ▼▼▼ FIXED: Using static DamageSource.thrown instead of damageSources() ▼▼▼
         pResult.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), 1.0F);
     }
 
@@ -81,7 +80,6 @@ public class CoconutEntity extends ThrowableItemProjectile {
     protected void onHit(HitResult pResult) {
         super.onHit(pResult);
 
-        // ▼▼▼ FIXED: Using this.level (direct field) instead of this.level() (method) ▼▼▼
         if (this.level.isClientSide()) {
             return;
         }
@@ -118,7 +116,6 @@ public class CoconutEntity extends ThrowableItemProjectile {
 
             this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.WOOD_BREAK, SoundSource.NEUTRAL, 0.7F, 1.0F);
 
-            // ▼▼▼ CHANGE THIS LINE TO YOUR DESIRED ITEM ▼▼▼
             ItemEntity itemDrop = new ItemEntity(this.level, this.getX(), this.getY(), this.getZ(), new ItemStack(ModItems.OPENED_COCONUT.get()));
             this.level.addFreshEntity(itemDrop);
 

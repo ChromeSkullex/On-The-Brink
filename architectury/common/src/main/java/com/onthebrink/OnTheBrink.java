@@ -1,7 +1,5 @@
 package com.onthebrink;
 
-import com.google.common.base.Supplier;
-import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.entity.ModEntities;
@@ -10,17 +8,12 @@ import com.onthebrink.item.ModFuels;
 import com.onthebrink.item.ModItems;
 import com.onthebrink.util.GroundCoverBiomeConfig;
 import com.onthebrink.world.feature.ModFeatures;
-import com.onthebrink.world.feature.configuration.ModConfiguredFeatures;
 import com.onthebrink.world.gen.ModFlowerGeneration;
 import com.onthebrink.world.gen.ModMiscGroundCoverGeneration;
 import com.onthebrink.world.gen.ModTreeGeneration;
 import dev.architectury.event.events.common.LifecycleEvent;
-import dev.architectury.registry.fuel.FuelRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.block.Blocks;
 import org.slf4j.Logger;
 
 public final class OnTheBrink  {

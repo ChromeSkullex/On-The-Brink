@@ -43,14 +43,14 @@ public class WoodsCycadTrunkPlacer extends TrunkPlacer {
     ) {
         setDirtAt(level, blockSetter, random, pos.below(), config);
 
-        // Place the trunk blocks
+        // place the trunk blocks
         for (int i = 0; i < freeTreeHeight; i++) {
             placeLog(level, blockSetter, random, pos.above(i), config);
         }
 
         float CONE_GENERATION_CHANCE = 0.5f;
 
-        // Place the "onthebrink:woods_cycad_cone" block on top of the trunk
+        // place the "onthebrink:woods_cycad_cone" block on top of the trunk
         if (random.nextFloat() < CONE_GENERATION_CHANCE) {
             BlockState cycadCone = Registry.BLOCK.getOptional(new ResourceLocation("onthebrink", "woods_cycad_cone"))
                     .map(Block::defaultBlockState)

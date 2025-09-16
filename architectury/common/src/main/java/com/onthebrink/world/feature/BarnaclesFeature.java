@@ -45,8 +45,6 @@ public class BarnaclesFeature extends Feature<BarnaclesFeatureConfiguration> {
         WorldGenLevel world = context.level();
         BlockPos pos = context.origin();
 
-
-        // place a glowstone block
         world.setBlock(pos, Blocks.GLOWSTONE.defaultBlockState(), 3);
         world.getChunk(pos).markPosForPostprocessing(pos);
 

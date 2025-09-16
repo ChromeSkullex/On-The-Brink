@@ -55,11 +55,11 @@ public class WoodsCycadFoliagePlacer extends FoliagePlacer {
 
     @Override
     public int foliageHeight(Random random, int trunkHeight, TreeConfiguration config) {
-        return 2; // Palm trees typically have a small foliage height
+        return 2; // not sure if this is needed cuz we are hardcoding the foliage shape
     }
 
     @Override
     protected boolean shouldSkipLocation(Random random, int baseX, int baseY, int baseZ, int radius, boolean doubleTrunk) {
-        return false; // Don't skip locations to ensure full radial spread
+        return false;
     }
 }

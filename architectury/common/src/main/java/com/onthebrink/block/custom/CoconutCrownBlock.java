@@ -25,7 +25,6 @@ public class CoconutCrownBlock extends RotatedPillarBlock {
             Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
             Direction opposite = direction.getOpposite();
 
-            // Match trunk placer logic: offset outwards
             BlockPos targetPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
             BlockState targetState = level.getBlockState(targetPos);
 
@@ -37,7 +36,7 @@ public class CoconutCrownBlock extends RotatedPillarBlock {
 
             if (targetState.isAir()) {
                 BlockState newFruit = coconutFruitOpt.get().defaultBlockState()
-                        .setValue(CoconutFruitBlock.FACING, direction) // facing same as trunk placer
+                        .setValue(CoconutFruitBlock.FACING, direction)
                         .setValue(CoconutFruitBlock.AGE, 0);
                 level.setBlockAndUpdate(targetPos, newFruit);
             }
