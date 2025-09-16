@@ -25,5 +25,17 @@ public class ModTreeGeneration {
                     ModPlacedFeatures.WOODS_CYCAD_PLACED
             );
         });
+
+        // Coconut Tree
+        BiomeModifications.addProperties((context) -> {
+                    return GroundCoverBiomeConfig.isFeatureInBiome("coconut_tree", context);
+                }
+                , (context, mutable) -> {
+
+                    mutable.getGenerationProperties().addFeature(
+                            GenerationStep.Decoration.VEGETAL_DECORATION,
+                            ModPlacedFeatures.COCONUT_TREE_PLACED
+                    );
+                });
     }
 }

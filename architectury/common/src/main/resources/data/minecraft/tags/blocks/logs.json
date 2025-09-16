@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#onthebrink:woods_cycad_logs"
+    "#onthebrink:woods_cycad_logs",
+    "#onthebrink:coconut_logs"
   ]
 }

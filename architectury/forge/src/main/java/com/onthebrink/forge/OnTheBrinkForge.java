@@ -1,14 +1,14 @@
 package com.onthebrink.forge;
 
-import com.onthebrink.block.ModBlocks;
 import com.onthebrink.client.ClientInit;
 import com.onthebrink.world.feature.ModPlacedFeatures;
 import dev.architectury.platform.forge.EventBuses;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import com.onthebrink.OnTheBrink;
@@ -23,12 +23,19 @@ public final class OnTheBrinkForge {
 
         modEventBus.addListener(this::clientSetup);
 
+        modEventBus.addListener(this::annoyingRegistries);
+
         // Run our common setup.
         OnTheBrink.init();
 
-        ModPlacedFeatures.register();
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientInit::immediate);
     }
     private void clientSetup (final FMLClientSetupEvent event) {
         ClientInit.later();
+    }
+
+    private void annoyingRegistries(FMLCommonSetupEvent event) {
+        // safe place to deal with registries that forge is too stupid to load at the right order
+        event.enqueueWork(ModPlacedFeatures::register);
     }
 }

@@ -32,5 +32,17 @@ public class ModFlowerGeneration {
                     ModPlacedFeatures.CHOCOLATE_COSMOS_PLACED
             );
         });
+
+        // Pink Sand Verbena
+        BiomeModifications.addProperties((context) -> {
+                    return GroundCoverBiomeConfig.isFeatureInBiome("pink_sand_verbena", context);
+                }
+                , (context, mutable) -> {
+
+                    mutable.getGenerationProperties().addFeature(
+                            GenerationStep.Decoration.VEGETAL_DECORATION,
+                            ModPlacedFeatures.PINK_SAND_VERBENA_PLACED
+                    );
+                });
     }
 }

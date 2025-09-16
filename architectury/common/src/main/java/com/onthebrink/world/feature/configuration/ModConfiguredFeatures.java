@@ -3,8 +3,11 @@ package com.onthebrink.world.feature.configuration;
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.world.feature.ModFeatures;
+import com.onthebrink.world.feature.foliageplacers.CoconutTreeFoliagePlacer;
 import com.onthebrink.world.feature.foliageplacers.WoodsCycadFoliagePlacer;
+import com.onthebrink.world.feature.trunkplacers.CoconutTreeTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.WoodsCycadTrunkPlacer;
+import dev.architectury.platform.Mod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -12,6 +15,7 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.grower.JungleTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -31,6 +35,26 @@ public class ModConfiguredFeatures {
 
     public static Holder<ConfiguredFeature<BarnaclesFeatureConfiguration, ?>> BARNACLES = register("barnacles", ModFeatures.BARNACLES_FEATURE.feature(), BARNACLES_CONFIG);
 
+
+
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> COCONUT_TREE = FeatureUtils.register("coconut_tree", Feature.TREE,
+            new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LOG.get()),
+                    new CoconutTreeTrunkPlacer(7, 2, 1),
+                    BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LEAVES.get()),
+                    new CoconutTreeFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+                    new TwoLayersFeatureSize(1, 0, 2)
+            ).build());
+
+    public static Holder<PlacedFeature> COCONUT_TREE_CHECKED = PlacementUtils.register("coconut_tree_checked", COCONUT_TREE,
+            PlacementUtils.filteredByBlockSurvival(ModBlocks.COCONUT.get()));
+
+    public static Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> COCONUT_TREE_SPAWN = FeatureUtils.register("coconut_tree_spawn", Feature.RANDOM_SELECTOR,
+            new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(COCONUT_TREE_CHECKED, 0.5F)),
+                    COCONUT_TREE_CHECKED));
+
+
+
     public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> WOODS_CYCAD = FeatureUtils.register("woods_cycad", Feature.TREE,
             new TreeConfiguration.TreeConfigurationBuilder(
                     BlockStateProvider.simple(ModBlocks.WOODS_CYCAD_LOG.get()),
@@ -48,9 +72,11 @@ public class ModConfiguredFeatures {
                     WOODS_CYCAD_CHECKED));
 
 
+
+
     public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> AFRICAN_VIOLET = FeatureUtils.register("flower_african_violet", Feature.RANDOM_PATCH,
             new RandomPatchConfiguration(32, 6, 2,
-                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, // i = attempts, j = x spread, k = y spread
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.AFRICAN_VIOLET.get())))));
 
 
@@ -58,6 +84,11 @@ public class ModConfiguredFeatures {
             new RandomPatchConfiguration(32, 6, 2,
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CHOCOLATE_COSMOS.get())))));
+
+    public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PINK_SAND_VERBENA = FeatureUtils.register("flower_pink_sand_verbena", Feature.RANDOM_PATCH,
+            new RandomPatchConfiguration(80, 8, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_SAND_VERBENA.get())))));
 
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> Holder<ConfiguredFeature<C, ?>> register(String name, F feature, C config) {

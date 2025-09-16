@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "onthebrink:block/coconut_tree_log_top",
+    "side": "onthebrink:block/coconut_tree_log_side"
+  }
+}

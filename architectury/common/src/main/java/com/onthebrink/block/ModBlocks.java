@@ -1,10 +1,10 @@
 package com.onthebrink.block;
 
 import com.onthebrink.OnTheBrink;
-import com.onthebrink.block.custom.FlammableRotatedPillarBlock;
-import com.onthebrink.block.custom.GlassSpongeBlock;
-import com.onthebrink.block.custom.WetGlassSpongeBlock;
+import com.onthebrink.block.custom.*;
 import com.onthebrink.item.ModItems;
+import com.onthebrink.item.custom.CoconutItem;
+import com.onthebrink.world.feature.tree.CoconutTreeGrower;
 import com.onthebrink.world.feature.tree.WoodsCycadGrower;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -13,14 +13,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.BLOCK_REGISTRY);
@@ -35,6 +30,19 @@ public class ModBlocks {
             .sound(SoundType.STONE)
     ), CreativeModeTab.TAB_MISC);
      */
+    public static final RegistrySupplier<DeadBushBlock> PINK_SAND_VERBENA = registerBlock("pink_sand_verbena", () -> new DeadBushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<LeavesBlock> COCONUT_TREE_LEAVES = registerBlock("coconut_tree_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<CoconutCrownBlock> COCONUT_TREE_CROWN = registerBlock("coconut_tree_crown", () -> new CoconutCrownBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).randomTicks()), CreativeModeTab.TAB_MISC);
+
+    public static final RegistrySupplier<RotatedPillarBlock> COCONUT_TREE_LOG = registerBlock("coconut_tree_log", () -> FlammableRotatedPillarBlock.get(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)), CreativeModeTab.TAB_MISC);
+
+    // no item
+    public static final RegistrySupplier<CoconutFruitBlock> COCONUT_FRUIT = registerBlockNoItem("coconut_fruit", () -> new CoconutFruitBlock(BlockBehaviour.Properties.copy(Blocks.COCOA)));
+
+    // item registered at ModBlocks.register() to control the stack size
+    public static final RegistrySupplier<CoconutSaplingBlock> COCONUT = registerBlockNoItem("coconut", () -> new CoconutSaplingBlock(new CoconutTreeGrower(), BlockBehaviour.Properties.copy(Blocks.COCOA).noCollission()));
 
     public static final RegistrySupplier<BushBlock> AFRICAN_VIOLET = registerBlock("african_violet", () -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
 
@@ -92,6 +100,10 @@ public class ModBlocks {
 
     public static final RegistrySupplier<TrapDoorBlock> WOODS_CYCAD_TRAPDOOR = registerBlock("woods_cycad_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)), CreativeModeTab.TAB_MISC);
 
+    public static <T extends Block> RegistrySupplier<T> registerBlockNoItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
+    }
+
     public static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block, CreativeModeTab creativeModeTab) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, creativeModeTab);
@@ -105,6 +117,7 @@ public class ModBlocks {
 
     public static void register(){
         FlammableRotatedPillarBlock.registerAllStripped();
+
         BLOCKS.register();
     }
 }

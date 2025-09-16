@@ -21,5 +21,12 @@
   ],
   "barnacles_swamp": [
     "minecraft:swamp"
+  ],
+  "coconut_tree": [
+    "minecraft:beach",
+    "minecraft:jungle"
+  ],
+  "pink_sand_verbena": [
+    "minecraft:beach"
   ]
 }

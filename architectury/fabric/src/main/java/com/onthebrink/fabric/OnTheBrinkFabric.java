@@ -20,6 +20,8 @@ public final class OnTheBrinkFabric implements ModInitializer {
         }
         initialized = true;
 
+
+
         MiscRegistryFabric.registerTreePlacerTypes();
 
         // Run our common setup.
@@ -27,6 +29,7 @@ public final class OnTheBrinkFabric implements ModInitializer {
 
         ModPlacedFeatures.register();
 
+        ClientInit.immediate(); // can be called at the same time as later() on fabric because it isn't as moronic as forge
         ClientInit.later();
     }
 }
