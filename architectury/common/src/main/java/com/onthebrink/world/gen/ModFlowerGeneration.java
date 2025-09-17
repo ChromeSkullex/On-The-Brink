@@ -33,6 +33,18 @@ public class ModFlowerGeneration {
             );
         });
 
+        // Sleep Poppy
+        BiomeModifications.addProperties((context) -> {
+                    return GroundCoverBiomeConfig.isFeatureInBiome("sleep_poppy", context);
+                }
+                , (context, mutable) -> {
+
+                    mutable.getGenerationProperties().addFeature(
+                            GenerationStep.Decoration.VEGETAL_DECORATION,
+                            ModPlacedFeatures.SLEEP_POPPY_PLACED
+                    );
+                });
+
         // Pink Sand Verbena
         BiomeModifications.addProperties((context) -> {
                     return GroundCoverBiomeConfig.isFeatureInBiome("pink_sand_verbena", context);

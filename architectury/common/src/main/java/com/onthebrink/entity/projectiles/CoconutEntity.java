@@ -73,7 +73,7 @@ public class CoconutEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
-        pResult.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), 1.0F);
+        pResult.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), 3.0F);
     }
 
     @Override
@@ -86,6 +86,9 @@ public class CoconutEntity extends ThrowableItemProjectile {
 
         int currentBounces = this.entityData.get(BOUNCES);
 
+        // snowball hit sound for every time the coconut hits something
+        this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.DRIPSTONE_BLOCK_PLACE, SoundSource.NEUTRAL, 0.4F, 1.5F);
+
         if (currentBounces < 1) {
             this.entityData.set(BOUNCES, currentBounces + 1);
 
@@ -93,7 +96,6 @@ public class CoconutEntity extends ThrowableItemProjectile {
             double bounceFactor = 0.4D;
 
             if (pResult instanceof BlockHitResult blockHitResult) {
-                // ▼▼▼ FIXED: Manually calculating the bounce vector ▼▼▼
                 Direction direction = blockHitResult.getDirection();
                 Vec3 normal = new Vec3(direction.getStepX(), direction.getStepY(), direction.getStepZ());
                 // The reflection formula is: v' = v - 2 * (v . n) * n
@@ -102,9 +104,6 @@ public class CoconutEntity extends ThrowableItemProjectile {
             } else {
                 this.setDeltaMovement(currentVelocity.scale(-bounceFactor));
             }
-
-            this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.SNOW_HIT, SoundSource.NEUTRAL, 0.4F, 1.5F);
-
         } else {
             if (this.level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(

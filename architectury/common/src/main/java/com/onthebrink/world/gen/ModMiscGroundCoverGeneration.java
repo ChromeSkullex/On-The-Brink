@@ -1,9 +1,9 @@
 package com.onthebrink.world.gen;
 
-import com.onthebrink.OnTheBrink;
 import com.onthebrink.util.GroundCoverBiomeConfig;
 import com.onthebrink.world.feature.ModPlacedFeatures;
 import dev.architectury.registry.level.biome.BiomeModifications;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class ModMiscGroundCoverGeneration {
@@ -41,6 +41,37 @@ public class ModMiscGroundCoverGeneration {
                 );
             }
         });
-    }
 
+        // Seashells in beach (non waterlogged)
+        BiomeModifications.addProperties((context, mutable) -> {
+            if(GroundCoverBiomeConfig.isFeatureInBiome("seashells_beach", context))
+            {
+                mutable.getGenerationProperties().addFeature(
+                        GenerationStep.Decoration.TOP_LAYER_MODIFICATION,
+                        ModPlacedFeatures.SEASHELLS_BEACH_DRY_PLACED
+                );
+            }
+        });
+        // Seashells in beach (waterlogged)
+        BiomeModifications.addProperties((context, mutable) -> {
+            if(GroundCoverBiomeConfig.isFeatureInBiome("seashells_beach", context))
+            {
+                mutable.getGenerationProperties().addFeature(
+                        GenerationStep.Decoration.TOP_LAYER_MODIFICATION,
+                        ModPlacedFeatures.SEASHELLS_BEACH_WATERLOGGED_PLACED
+                );
+            }
+        });
+
+        // Seashells on seafloor
+        BiomeModifications.addProperties((context, mutable) -> {
+            if(GroundCoverBiomeConfig.isFeatureInBiome("seashells_seafloor", context))
+            {
+                mutable.getGenerationProperties().addFeature(
+                        GenerationStep.Decoration.TOP_LAYER_MODIFICATION,
+                        ModPlacedFeatures.SEASHELLS_SEAFLOOR_PLACED
+                );
+            }
+        });
+    }
 }

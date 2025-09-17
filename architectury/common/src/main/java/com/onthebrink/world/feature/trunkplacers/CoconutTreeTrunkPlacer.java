@@ -44,7 +44,7 @@ public class CoconutTreeTrunkPlacer extends TrunkPlacer {
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(
             LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, int freeTreeHeight, BlockPos pos, TreeConfiguration config
     ) {
-        // Place the trunk blocks
+        // place the trunk blocks
         for (int i = 0; i < freeTreeHeight; i++) {
             placeLog(level, blockSetter, random, pos.above(i), config);
         }

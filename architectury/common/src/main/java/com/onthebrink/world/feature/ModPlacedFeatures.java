@@ -1,10 +1,7 @@
 package com.onthebrink.world.feature;
 
-import com.onthebrink.OnTheBrink;
 import com.onthebrink.world.feature.configuration.ModConfiguredFeatures;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.core.Holder;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -14,7 +11,11 @@ public class ModPlacedFeatures {
     public static Holder<PlacedFeature> WOODS_CYCAD_PLACED;
     public static Holder<PlacedFeature> AFRICAN_VIOLET_PLACED;
     public static Holder<PlacedFeature> CHOCOLATE_COSMOS_PLACED;
+    public static Holder<PlacedFeature> SLEEP_POPPY_PLACED;
     public static Holder<PlacedFeature> PINK_SAND_VERBENA_PLACED;
+    public static Holder<PlacedFeature> SEASHELLS_BEACH_DRY_PLACED;
+    public static Holder<PlacedFeature> SEASHELLS_BEACH_WATERLOGGED_PLACED;
+    public static Holder<PlacedFeature> SEASHELLS_SEAFLOOR_PLACED;
     public static Holder<PlacedFeature> BARNACLES_STONY_SHORES_PLACED;
     public static Holder<PlacedFeature> BARNACLES_CORAL_REEF_PLACED;
     public static Holder<PlacedFeature> BARNACLES_SWAMP_PLACED;
@@ -61,9 +62,24 @@ public class ModPlacedFeatures {
                 ModConfiguredFeatures.CHOCOLATE_COSMOS, RarityFilter.onAverageOnceEvery(10),
                 InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 
+        SLEEP_POPPY_PLACED = PlacementUtils.register("sleep_poppy_placed",
+                ModConfiguredFeatures.SLEEP_POPPY, RarityFilter.onAverageOnceEvery(40),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+
         PINK_SAND_VERBENA_PLACED = PlacementUtils.register("pink_sand_verbena_placed",
                 ModConfiguredFeatures.PINK_SAND_VERBENA, RarityFilter.onAverageOnceEvery(2),
                 InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP);
 
+        SEASHELLS_BEACH_DRY_PLACED = PlacementUtils.register("seashells_dry_placed",
+                ModConfiguredFeatures.SEASHELLS_DRY, RarityFilter.onAverageOnceEvery(1),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP);
+
+        SEASHELLS_BEACH_WATERLOGGED_PLACED = PlacementUtils.register("seashells_waterlogged_placed",
+                ModConfiguredFeatures.SEASHELLS_WATERLOGGED, RarityFilter.onAverageOnceEvery(1),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP);
+
+        SEASHELLS_SEAFLOOR_PLACED = PlacementUtils.register("seashells_seafloor_placed",
+                ModConfiguredFeatures.SEASHELLS_WATERLOGGED, RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP);
     }
 }

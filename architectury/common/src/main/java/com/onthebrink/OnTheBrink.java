@@ -3,6 +3,7 @@ package com.onthebrink;
 import com.mojang.logging.LogUtils;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.entity.ModEntities;
+import com.onthebrink.event.ModEvents;
 import com.onthebrink.item.ModCompostables;
 import com.onthebrink.item.ModFuels;
 import com.onthebrink.item.ModItems;
@@ -31,6 +32,8 @@ public final class OnTheBrink  {
         ModItems.register();
 
         ModEntities.register();
+
+        ModEvents.register();
 
         ModTreeGeneration.generateTrees();
         ModFlowerGeneration.generateFlowers();

@@ -13,6 +13,23 @@
     "minecraft:savanna_plateau",
     "minecraft:windswept_savanna"
   ],
+  "pink_sand_verbena": [
+    "minecraft:beach"
+  ],
+  "sleep_poppy": [
+    "minecraft:swamp",
+    "minecraft:dark_forest",
+    "minecraft:meadow",
+    "minecraft:grove",
+    "minecraft:snowy_slopes",
+    "minecraft:frozen_river",
+    "minecraft:snowy_mountains",
+    "minecraft:old_growth_pine_taiga",
+    "minecraft:old_growth_spruce_taiga",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:badlands"
+  ],
   "barnacles_stony_shores": [
     "minecraft:stony_shore"
   ],
@@ -26,7 +43,12 @@
     "minecraft:beach",
     "minecraft:jungle"
   ],
-  "pink_sand_verbena": [
+  "seashells_beach": [
     "minecraft:beach"
+  ],
+  "seashells_seafloor": [
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:deep_lukewarm_ocean"
   ]
 }

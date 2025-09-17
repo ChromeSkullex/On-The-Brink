@@ -10,18 +10,22 @@ import com.onthebrink.world.feature.trunkplacers.WoodsCycadTrunkPlacer;
 import dev.architectury.platform.Mod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.grower.JungleTreeGrower;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.List;
@@ -34,8 +38,6 @@ public class ModConfiguredFeatures {
     );
 
     public static Holder<ConfiguredFeature<BarnaclesFeatureConfiguration, ?>> BARNACLES = register("barnacles", ModFeatures.BARNACLES_FEATURE.feature(), BARNACLES_CONFIG);
-
-
 
     public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> COCONUT_TREE = FeatureUtils.register("coconut_tree", Feature.TREE,
             new TreeConfiguration.TreeConfigurationBuilder(
@@ -85,12 +87,49 @@ public class ModConfiguredFeatures {
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CHOCOLATE_COSMOS.get())))));
 
-    public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PINK_SAND_VERBENA = FeatureUtils.register("flower_pink_sand_verbena", Feature.RANDOM_PATCH,
-            new RandomPatchConfiguration(80, 8, 2,
+    public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> SLEEP_POPPY = FeatureUtils.register("flower_sleep_poppy", Feature.RANDOM_PATCH,
+            new RandomPatchConfiguration(256, 18, 3,
                     PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_SAND_VERBENA.get())))));
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SLEEP_POPPY.get())))));
 
 
+    public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PINK_SAND_VERBENA = FeatureUtils.register("flower_pink_sand_verbena", Feature.RANDOM_PATCH,
+            new RandomPatchConfiguration(60, 7, 2,
+                    PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_SAND_VERBENA.get())),
+                            BlockPredicate.allOf(
+                                    BlockPredicate.matchesBlock(Blocks.SAND, new Vec3i(0, -1, 0)), // must be on sand
+                                    BlockPredicate.matchesBlock(Blocks.AIR, new Vec3i(0, 0, 0))    // must be empty
+                            )
+                    )));
+
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> SEASHELLS_DRY =
+            FeatureUtils.register("seashells_dry", Feature.RANDOM_PATCH,
+                    new RandomPatchConfiguration(32, 6, 2,
+                            PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                                    // Provide the default block state (waterlogged=false)
+                                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SEASHELLS.get())),
+                                    BlockPredicate.allOf(
+                                            BlockPredicate.matchesBlock(Blocks.SAND, new Vec3i(0, -1, 0)),
+                                            BlockPredicate.matchesBlock(Blocks.AIR, new Vec3i(0, 0, 0))
+                                    )
+                            )));
+
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> SEASHELLS_WATERLOGGED =
+            FeatureUtils.register("seashells_waterlogged", Feature.RANDOM_PATCH,
+                    new RandomPatchConfiguration(32, 6, 2,
+                            PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                                    // Provide the block state WITH waterlogged set to true
+                                    new SimpleBlockConfiguration(BlockStateProvider.simple(
+                                            ModBlocks.SEASHELLS.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, true)
+                                    )),
+                                    BlockPredicate.allOf(
+                                            BlockPredicate.matchesBlock(Blocks.SAND, new Vec3i(0, -1, 0)),
+                                            BlockPredicate.matchesBlock(Blocks.WATER, new Vec3i(0, 0, 0))  // must be in water
+                                    )
+                            )));
+
+    // not sure if needed
     private static <C extends FeatureConfiguration, F extends Feature<C>> Holder<ConfiguredFeature<C, ?>> register(String name, F feature, C config) {
         return FeatureUtils.register(OnTheBrink.MOD_ID + ":" + name, feature, config);
     }
