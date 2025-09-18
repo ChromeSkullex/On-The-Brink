@@ -1,6 +1,5 @@
 package com.onthebrink.block.custom;
 
-import com.onthebrink.block.ModBlocks;
 import com.onthebrink.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
@@ -11,98 +10,29 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.AbstractCauldronBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Random;
 
-public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
+public class TranquilizerCauldronBlock extends AbstractCauldronBlock {
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL_CAULDRON;
 
-    public PoppyTeaCauldronBlock(Properties properties) {
+    public TranquilizerCauldronBlock(Properties properties) {
         super(properties, CauldronInteraction.EMPTY);
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(1)));
-    }
-
-    @Override // this only runs clientside btw
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
-        BlockState stateBelow = level.getBlockState(pos.below());
-        Block blockBelow = stateBelow.getBlock();
-
-        boolean isHeated = false;
-        if (blockBelow == Blocks.FIRE || blockBelow == Blocks.SOUL_FIRE) {
-            isHeated = true;
-        } else if (blockBelow instanceof CampfireBlock && stateBelow.getValue(CampfireBlock.LIT)) {
-            isHeated = true;
-        }
-        else if (blockBelow == Blocks.LAVA || blockBelow == Blocks.LAVA_CAULDRON){
-            isHeated = true;
-        }
-
-        if (isHeated) {
-            if (random.nextFloat() < 0.8f) { // chance per tick to spawn bubbles
-                float rand_x = (random.nextFloat() - 0.5f) * 0.5f;
-                float rand_z = (random.nextFloat() - 0.5f) * 0.5f;
-
-                double x = pos.getX() + 0.5D + rand_x;
-                double y = pos.getY() + getContentHeight(state); // spawn just above liquid
-                double z = pos.getZ() + 0.5D + rand_z;
-
-                level.addParticle(ParticleTypes.BUBBLE_COLUMN_UP, x, y, z, 0.0D, 0.05D, 0.0D);
-                level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0D, 0.05D, 0.0D);
-                level.playLocalSound(x, y, z, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT,
-                        SoundSource.BLOCKS, 0.2F, 1.0F, false);
-            }
-        }
-    }
-
-    @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if (random.nextInt(3) != 0) return; // 1/3 chance of a random tick triggering the transformation into tranquilizer
-
-        BlockState stateBelow = level.getBlockState(pos.below());
-        Block blockBelow = stateBelow.getBlock();
-
-        boolean isHeated = false;
-        if (blockBelow == Blocks.FIRE || blockBelow == Blocks.SOUL_FIRE) {
-            isHeated = true;
-        } else if (blockBelow instanceof CampfireBlock && stateBelow.getValue(CampfireBlock.LIT)) {
-            isHeated = true;
-        }
-        else if (blockBelow == Blocks.LAVA || blockBelow == Blocks.LAVA_CAULDRON){
-            isHeated = true;
-        }
-
-        if (isHeated) {
-            int currentLevel = state.getValue(LEVEL);
-
-            level.setBlockAndUpdate(
-                    pos,
-                    ModBlocks.TRANQUILIZER_CAULDRON.get().defaultBlockState().setValue(LEVEL, currentLevel)
-            );
-
-            level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.sendParticles(ParticleTypes.CLOUD,
-                    pos.getX() + 0.5D,
-                    pos.getY() + getContentHeight(state),
-                    pos.getZ() + 0.5D,
-                    8, 0.2, 0.1, 0.2, 0.0
-            );
-
-        }
     }
 
     @Override
@@ -119,13 +49,13 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
             return InteractionResult.SUCCESS;
         }
 
-        // taking Tea From Cauldron
+        // taking Tranquilizer From Cauldron
         if (heldItem == Items.BUCKET) {
             if (currentLevel == 3) {
                 if (!player.getAbilities().instabuild) {
                     heldItemStack.shrink(1);
                 }
-                player.getInventory().add(new ItemStack(ModItems.BUCKET_OF_POPPY_TEA.get()));
+                player.getInventory().add(new ItemStack(ModItems.BUCKET_OF_TRANQUILIZER.get()));
                 level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
                 level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 player.awardStat(Stats.USE_CAULDRON);
@@ -136,7 +66,7 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
                 heldItemStack.shrink(1);
             }
 
-            player.getInventory().add(new ItemStack(ModItems.BOTTLE_OF_POPPY_TEA.get()));
+            player.getInventory().add(new ItemStack(ModItems.BOTTLE_OF_TRANQUILIZER.get()));
 
             lowerFillLevel(state, level, pos);
             level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -144,8 +74,8 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
             return InteractionResult.SUCCESS;
         }
 
-        // check if player is holding a BUCKET_OF_POPPY_TEA to fill it up
-        else if (heldItem == ModItems.BUCKET_OF_POPPY_TEA.get().asItem()) {
+        // check if player is holding a BUCKET_OF_TRANQUILIZER to fill it up
+        else if (heldItem == ModItems.BUCKET_OF_TRANQUILIZER.get().asItem()) {
             if (currentLevel < 3) {
                 if (!player.getAbilities().instabuild) {
                     player.setItemInHand(hand, new ItemStack(Items.BUCKET));
@@ -157,8 +87,8 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
                 return InteractionResult.SUCCESS;
             }
         }
-        // check if player is holding a BOTTLE_OF_POPPY_TEA to add one level
-        else if (heldItem == ModItems.BOTTLE_OF_POPPY_TEA.get().asItem()) {
+        // check if player is holding a BOTTLE_OF_TRANQUILIZER to add one level
+        else if (heldItem == ModItems.BOTTLE_OF_TRANQUILIZER.get().asItem()) {
             if (currentLevel < 3) {
                 if (!player.getAbilities().instabuild) {
                     ItemStack heldStack = player.getItemInHand(hand);
@@ -189,13 +119,6 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
     protected double getContentHeight(BlockState state) {
         return (6.0 + (double) ((Integer) state.getValue(LEVEL)).intValue() * 3.0) / 16.0;
     }
-
-    // static version cuz apparently the other one isnt for some reason
-    public static double getContentHeightStatic(BlockState state){
-        return (6.0 + (double) ((Integer) state.getValue(LEVEL)).intValue() * 3.0) / 16.0;
-    }
-
-
 
     public static void lowerFillLevel(BlockState state, Level level, BlockPos pos) {
         int i = (Integer) state.getValue(LEVEL) - 1;

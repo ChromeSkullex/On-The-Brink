@@ -55,7 +55,7 @@ public class CoconutFruitBlock extends CocoaBlock {
         if (heldItem.getItem() instanceof AxeItem || heldItem.getItem() instanceof SwordItem) {
             if (!world.isClientSide) {
                 // drop open coconut
-                ItemStack drop = new ItemStack(ModItems.OPENED_COCONUT.get()); // Replace with your item
+                ItemStack drop = new ItemStack(ModItems.OPENED_COCONUT.get());
                 popResource(world, pos, drop);
 
                 world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);

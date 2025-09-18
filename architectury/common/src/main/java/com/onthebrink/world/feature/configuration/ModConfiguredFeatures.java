@@ -5,6 +5,7 @@ import com.onthebrink.block.ModBlocks;
 import com.onthebrink.world.feature.ModFeatures;
 import com.onthebrink.world.feature.foliageplacers.CoconutTreeFoliagePlacer;
 import com.onthebrink.world.feature.foliageplacers.WoodsCycadFoliagePlacer;
+import com.onthebrink.world.feature.trunkplacers.CoconutTreeFromSaplingTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.CoconutTreeTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.WoodsCycadTrunkPlacer;
 import dev.architectury.platform.Mod;
@@ -43,6 +44,17 @@ public class ModConfiguredFeatures {
             new TreeConfiguration.TreeConfigurationBuilder(
                     BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LOG.get()),
                     new CoconutTreeTrunkPlacer(7, 2, 1),
+                    BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LEAVES.get()),
+                    new CoconutTreeFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+                    new TwoLayersFeatureSize(1, 0, 2)
+            ).build());
+
+    // we use a different one when growing from a sapling (the Coconut block)
+    // because we don't want it to generate already carrying coconuts around the crown.
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> COCONUT_TREE_FROM_SAPLING = FeatureUtils.register("coconut_tree_from_sapling", Feature.TREE,
+            new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LOG.get()),
+                    new CoconutTreeFromSaplingTrunkPlacer(7, 2, 1),
                     BlockStateProvider.simple(ModBlocks.COCONUT_TREE_LEAVES.get()),
                     new CoconutTreeFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                     new TwoLayersFeatureSize(1, 0, 2)
@@ -94,7 +106,7 @@ public class ModConfiguredFeatures {
 
 
     public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PINK_SAND_VERBENA = FeatureUtils.register("flower_pink_sand_verbena", Feature.RANDOM_PATCH,
-            new RandomPatchConfiguration(60, 7, 2,
+            new RandomPatchConfiguration(20, 4, 2,
                     PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_SAND_VERBENA.get())),
                             BlockPredicate.allOf(

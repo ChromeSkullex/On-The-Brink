@@ -2,8 +2,31 @@
   "item.onthebrink.ruby": "Ruby",
   "block.onthebrink.ruby_ore": "Ruby Ore",
 
-  "item.onthebrink.bucket_of_poppy_tea": "Bucket of Poppy Tea",
   "block.onthebrink.sleep_poppy": "Sleep Poppy",
+  "block.onthebrink.sleep_poppy.desc_0": "A rare flower that enjoys swamps,",
+  "block.onthebrink.sleep_poppy.desc_1": "dark forests, and flowering landscapes.",
+  "block.onthebrink.sleep_poppy.desc_2": "Drop three into a water cauldron",
+  "block.onthebrink.sleep_poppy.desc_3": "to brew a relaxing tea.",
+
+  "item.onthebrink.bottle_of_poppy_tea": "Bottle of Poppy Tea",
+  "item.onthebrink.bottle_of_poppy_tea.desc_0": "A relaxing tea made from Sleep Poppies.",
+  "item.onthebrink.bottle_of_poppy_tea.desc_1": "Fill a cauldron and heat over a campfire",
+  "item.onthebrink.bottle_of_poppy_tea.desc_2": "until it becomes a potent sedative.",
+
+  "item.onthebrink.bucket_of_poppy_tea": "Bucket of Poppy Tea",
+
+  "item.onthebrink.bucket_of_tranquilizer": "Bucket of Tranquilizer",
+  "item.onthebrink.bucket_of_tranquilizer.desc_0": "A potent sedative, brewed by",
+  "item.onthebrink.bucket_of_tranquilizer.desc_1": "heating Poppy Tea in a cauldron.",
+  "item.onthebrink.bucket_of_tranquilizer.desc_2": "Seriously: do not drink this.",
+  "item.onthebrink.bucket_of_tranquilizer.desc_3": "This dose is likely fatal.",
+
+  "item.onthebrink.bottle_of_tranquilizer": "Bottle of Tranquilizer",
+  "item.onthebrink.bottle_of_tranquilizer.desc_0": "A potent sedative, brewed by",
+  "item.onthebrink.bottle_of_tranquilizer.desc_1": "heating Poppy Tea in a cauldron.",
+  "item.onthebrink.bottle_of_tranquilizer.desc_2": "Warning: Drinking it may cause",
+  "item.onthebrink.bottle_of_tranquilizer.desc_3": "unpleasant side effects.",
+
   "block.onthebrink.seashells": "Seashells",
   "block.onthebrink.pink_sand_verbena": "Pink Sand Verbena",
   "item.onthebrink.coconut": "Coconut",

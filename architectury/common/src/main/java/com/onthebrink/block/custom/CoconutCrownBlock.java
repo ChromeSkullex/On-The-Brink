@@ -21,25 +21,47 @@ public class CoconutCrownBlock extends RotatedPillarBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        if (random.nextInt(2) == 0) { // 50% chance per tick
-            Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-            Direction opposite = direction.getOpposite();
+        if (random.nextInt(2) != 0) return; // 50% chance per tick
 
-            BlockPos targetPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
-            BlockState targetState = level.getBlockState(targetPos);
+        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+        Direction opposite = direction.getOpposite();
 
-            Optional<Block> coconutFruitOpt = Registry.BLOCK.getOptional(new ResourceLocation("onthebrink", "coconut_fruit"));
+        BlockPos targetPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
+        BlockState targetState = level.getBlockState(targetPos);
 
-            if (coconutFruitOpt.isEmpty()) {
-                return; // block not registered
+        Optional<Block> coconutFruitOpt = Registry.BLOCK.getOptional(new ResourceLocation("onthebrink", "coconut_fruit"));
+
+        if (coconutFruitOpt.isEmpty()) return; // block not registered
+
+
+        if (targetState.isAir()) {
+
+            // check if there are at least 3 logs below
+            for (int i = 1; i <= 3; i++) {
+                BlockState below = level.getBlockState(pos.below(i));
+                if (!below.is(ModBlocks.COCONUT_TREE_LOG.get())) {
+                    return;
+                }
             }
 
-            if (targetState.isAir()) {
-                BlockState newFruit = coconutFruitOpt.get().defaultBlockState()
-                        .setValue(CoconutFruitBlock.FACING, direction)
-                        .setValue(CoconutFruitBlock.AGE, 0);
-                level.setBlockAndUpdate(targetPos, newFruit);
+            BlockPos abovePos = pos.above();
+
+            // check if there are 4 leaves in this shape + over the crown
+            for (Direction horizontal : Direction.Plane.HORIZONTAL) {
+                BlockPos neighborPos = abovePos.relative(horizontal);
+                BlockState neighbor = level.getBlockState(neighborPos);
+                if (!neighbor.is(ModBlocks.COCONUT_TREE_LEAVES.get())) return;
             }
+
+            // after all this, is it even worth it lol I'm not sure if limiting
+            // creativity in this way is a good choice.
+            // the idea is to encourage people to at least shape their coconut farms
+            // into something that resembles a palm tree.
+
+            BlockState newFruit = coconutFruitOpt.get().defaultBlockState()
+                    .setValue(CoconutFruitBlock.FACING, direction)
+                    .setValue(CoconutFruitBlock.AGE, 0);
+            level.setBlockAndUpdate(targetPos, newFruit);
         }
     }
 }

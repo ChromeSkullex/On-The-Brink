@@ -11,6 +11,6 @@ import java.util.Random;
 public class CoconutTreeGrower extends AbstractTreeGrower {
     @Override
     protected @Nullable Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean bl) {
-        return ModConfiguredFeatures.COCONUT_TREE;
+        return ModConfiguredFeatures.COCONUT_TREE_FROM_SAPLING;
     }
 }

@@ -31,6 +31,8 @@ public class CoconutItem extends Item {
         this.blockSupplier = blockSupplier;
     }
 
+    // TODO: Fix the bug where the coconut gets thrown when it could've been placed by replacing a block such as grass.
+    // Maybe the code of the BlockItem class shines some light
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
@@ -38,7 +40,7 @@ public class CoconutItem extends Item {
 
         // creative mode players have a slightly longer reach.
         // would be cleaner to use the Minecraft singleton to get the gamemode's range
-        // but it's only available clientside
+        // but it's only available clientside :/
         double range = player.isCreative() ? 5.0D : 4.5D;
 
         HitResult hitResult = getPlayerPOVHitResult(world, player, range);
@@ -68,7 +70,7 @@ public class CoconutItem extends Item {
         }
 
         // if we didn't place a block (either because we hit an entity, missed, or placement failed),
-        // then we throw the coconut as the default action.
+        // then we throw the coconut
         if (!world.isClientSide) {
             CoconutEntity coconut = new CoconutEntity(world, player);
             coconut.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, 1.5f, 1f);

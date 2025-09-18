@@ -60,5 +60,12 @@ public class ClientInit {
                 return 0x96856C;
             }
         }, ModBlocks.POPPY_TEA_CAULDRON);
+
+        ColorHandlerRegistry.registerBlockColors(new BlockColor() {
+            @Override
+            public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTintGetter, @Nullable BlockPos blockPos, int i) {
+                return 0xECEFB8;
+            }
+        }, ModBlocks.TRANQUILIZER_CAULDRON);
     }
 }

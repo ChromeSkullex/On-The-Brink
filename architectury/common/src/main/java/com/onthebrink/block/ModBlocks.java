@@ -34,9 +34,11 @@ public class ModBlocks {
 
     public static final RegistrySupplier<PoppyTeaCauldronBlock> POPPY_TEA_CAULDRON = registerBlockNoItem("poppy_tea_cauldron", () -> new PoppyTeaCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).randomTicks()));
 
+    public static final RegistrySupplier<TranquilizerCauldronBlock> TRANQUILIZER_CAULDRON = registerBlockNoItem("tranquilizer_cauldron", () -> new TranquilizerCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON)));
+
     public static final RegistrySupplier<FlowerBlock> SLEEP_POPPY = registerBlockNoItem("sleep_poppy", () -> new FlowerBlock(MobEffects.BLINDNESS, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
 
-    public static final RegistrySupplier<GroundCoverBlock> SEASHELLS = registerBlock("seashells", () -> new GroundCoverBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)), CreativeModeTab.TAB_MISC);
+    public static final RegistrySupplier<SeashellsBlock> SEASHELLS = registerBlockNoItem("seashells", () -> new SeashellsBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).strength(0.3f)));
 
     public static final RegistrySupplier<DeadBushBlock> PINK_SAND_VERBENA = registerBlock("pink_sand_verbena", () -> new DeadBushBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noOcclusion()), CreativeModeTab.TAB_MISC);
 
