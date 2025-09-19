@@ -2,16 +2,26 @@
   "item.onthebrink.ruby": "Ruby",
   "block.onthebrink.ruby_ore": "Ruby Ore",
 
+  "itemGroup.onthebrink.otb_plants": "On The Brink: Plants",
+  "itemGroup.onthebrink.otb_trees_and_wood": "On The Brink: Trees & Wood",
+  "itemGroup.onthebrink.otb_building": "On The Brink: Building",
+  "itemGroup.onthebrink.otb_nature": "On The Brink: Nature",
+  "itemGroup.onthebrink.otb_food": "On The Brink: Food",
+  "itemGroup.onthebrink.otb_tools": "On The Brink: Tools",
+
+  "item.onthebrink.advanced_blowgun": "Advanced Blowgun",
+
   "block.onthebrink.sleep_poppy": "Sleep Poppy",
   "block.onthebrink.sleep_poppy.desc_0": "A rare flower that enjoys swamps,",
   "block.onthebrink.sleep_poppy.desc_1": "dark forests, and flowering landscapes.",
   "block.onthebrink.sleep_poppy.desc_2": "Drop three into a water cauldron",
-  "block.onthebrink.sleep_poppy.desc_3": "to brew a relaxing tea.",
+  "block.onthebrink.sleep_poppy.desc_3": "to brew an addictive tea.",
 
   "item.onthebrink.bottle_of_poppy_tea": "Bottle of Poppy Tea",
-  "item.onthebrink.bottle_of_poppy_tea.desc_0": "A relaxing tea made from Sleep Poppies.",
-  "item.onthebrink.bottle_of_poppy_tea.desc_1": "Fill a cauldron and heat over a campfire",
-  "item.onthebrink.bottle_of_poppy_tea.desc_2": "until it becomes a potent sedative.",
+  "item.onthebrink.bottle_of_poppy_tea.desc_0": "A bitter tea made from Sleep Poppies.",
+  "item.onthebrink.bottle_of_poppy_tea.desc_1": "Smells foul and makes you dizzy.",
+  "item.onthebrink.bottle_of_poppy_tea.desc_2": "Fill a cauldron and heat over a campfire",
+  "item.onthebrink.bottle_of_poppy_tea.desc_3": "until it becomes a potent sedative.",
 
   "item.onthebrink.bucket_of_poppy_tea": "Bucket of Poppy Tea",
 

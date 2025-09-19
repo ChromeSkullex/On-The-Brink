@@ -69,8 +69,9 @@ public class PoppyTeaCauldronBlock extends AbstractCauldronBlock {
         }
     }
 
+
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (random.nextInt(3) != 0) return; // 1/3 chance of a random tick triggering the transformation into tranquilizer
 
         BlockState stateBelow = level.getBlockState(pos.below());

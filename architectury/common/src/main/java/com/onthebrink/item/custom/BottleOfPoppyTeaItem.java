@@ -57,12 +57,15 @@ public class BottleOfPoppyTeaItem extends Item {
         tooltip.add(new TranslatableComponent("item.onthebrink.bottle_of_poppy_tea.desc_0")
                 .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 
-        tooltip.add(Component.nullToEmpty("")); // empty line
-
         tooltip.add(new TranslatableComponent("item.onthebrink.bottle_of_poppy_tea.desc_1")
                 .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 
+        tooltip.add(Component.nullToEmpty("")); // empty line
+
         tooltip.add(new TranslatableComponent("item.onthebrink.bottle_of_poppy_tea.desc_2")
+                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+
+        tooltip.add(new TranslatableComponent("item.onthebrink.bottle_of_poppy_tea.desc_3")
                 .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
     }
 
@@ -106,10 +109,10 @@ public class BottleOfPoppyTeaItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
         if (!world.isClientSide) {
             // we multiply by 20 to convert from seconds to ticks
-            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20 * 5, 1));
+            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20 * 30, 1));
             entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20 * 300, 0));
-            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 15, 0)); // nausea
-            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 20 * 300, 1));
+            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 30, 0)); // nausea
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 20 * 30, 1));
         }
 
         if (entity instanceof Player player) {

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "onthebrink:item/woods_cycad_sprout"
+    "layer0": "onthebrink:item/advanced_blowgun"
   }
 }

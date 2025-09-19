@@ -2,6 +2,7 @@ package com.onthebrink.item.custom;
 
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.entity.projectiles.CoconutEntity;
+import com.onthebrink.misc.ModCreativeModeTabs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -27,7 +28,7 @@ public class CoconutItem extends Item {
     private final Supplier<? extends Block> blockSupplier;
 
     public CoconutItem(Supplier<? extends Block> blockSupplier) {
-        super(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC));
+        super(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.TREES_AND_WOOD));
         this.blockSupplier = blockSupplier;
     }
 
