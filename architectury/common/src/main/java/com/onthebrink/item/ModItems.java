@@ -9,14 +9,13 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.ITEM_REGISTRY);
 
     public static final RegistrySupplier<Item> ADVANCED_BLOWGUN = ITEMS.register("advanced_blowgun",
-            () -> new BlowgunItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS)));
+            () -> new BlowgunItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS).stacksTo(1)));
 
     public static final RegistrySupplier<Item> SLEEP_POPPY = ITEMS.register("sleep_poppy",
             () -> new SleepPoppyItem(ModBlocks.SLEEP_POPPY.get(), new Item.Properties().tab(ModCreativeModeTabs.PLANTS)));

@@ -1,15 +1,18 @@
 package com.onthebrink.client;
 
+import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.client.renderer.entity.CoconutRenderer;
 import com.onthebrink.entity.ModEntities;
+import com.onthebrink.event.BlowgunZoomEvent;
+import com.onthebrink.item.ModItems;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
+import dev.architectury.registry.item.ItemPropertiesRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,10 +22,24 @@ public class ClientInit {
 
     public static void later(){
         registerBlockRenderers();
+
+        registerItemPredicates();
     }
 
     public static void immediate(){
         registerEntityRenderers();
+    }
+
+    public static void registerItemPredicates(){
+
+        // this is to make the advanced blowgun item invisible when we are zooming
+        // in the model file I added a predicate to change it to an invisible model (zero scale)
+        ItemPropertiesRegistry.register(ModItems.ADVANCED_BLOWGUN.get(), OnTheBrink.location("zooming"),  (stack, world, entity, seed) -> {
+            // return 1 when we want the invisible blowgun model
+            if (entity == Minecraft.getInstance().player && BlowgunZoomEvent.runZoomMechanic) return 1.0F;
+            return 0.0F;
+        });
+
     }
 
     public static void registerEntityRenderers(){
