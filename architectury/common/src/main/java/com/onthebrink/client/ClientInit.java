@@ -2,11 +2,14 @@ package com.onthebrink.client;
 
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
+import com.onthebrink.client.particle.LatexDripParticle;
+import com.onthebrink.client.particle.ModParticles;
 import com.onthebrink.client.renderer.entity.CoconutRenderer;
 import com.onthebrink.entity.ModEntities;
 import com.onthebrink.event.BlowgunZoomEvent;
 import com.onthebrink.item.ModItems;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
+import dev.architectury.registry.client.particle.ParticleProviderRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
@@ -28,6 +31,12 @@ public class ClientInit {
 
     public static void immediate(){
         registerEntityRenderers();
+
+        registerParticleProviders();
+    }
+
+    public static void registerParticleProviders(){
+        ParticleProviderRegistry.register(ModParticles.LATEX_DRIP, LatexDripParticle.Provider::new);
     }
 
     public static void registerItemPredicates(){
@@ -49,6 +58,7 @@ public class ClientInit {
 
     public static void registerBlockRenderers(){
         // Plants
+        RenderTypeRegistry.register(RenderType.cutout(), ModBlocks.RUBBER_TREE_SAPLING.get());
         RenderTypeRegistry.register(RenderType.cutout(), ModBlocks.WOODS_CYCAD_SPROUT.get());
         RenderTypeRegistry.register(RenderType.cutout(), ModBlocks.CHOCOLATE_COSMOS.get());
         RenderTypeRegistry.register(RenderType.cutout(), ModBlocks.AFRICAN_VIOLET.get());
@@ -71,7 +81,7 @@ public class ClientInit {
     }
 
     private static void registerBlockColors(){
-        ColorHandlerRegistry.registerBlockColors(new BlockColor() {
+        ColorHandlerRegistry.registerBlockColors(   new BlockColor() {
             @Override
             public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTintGetter, @Nullable BlockPos blockPos, int i) {
                 return 0x96856C;

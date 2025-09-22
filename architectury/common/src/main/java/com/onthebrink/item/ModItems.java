@@ -2,6 +2,7 @@ package com.onthebrink.item;
 
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
+import com.onthebrink.block.custom.CoconutLatexCollectorBlock;
 import com.onthebrink.item.custom.*;
 import com.onthebrink.misc.ModCreativeModeTabs;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -15,7 +16,16 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.ITEM_REGISTRY);
 
     public static final RegistrySupplier<Item> ADVANCED_BLOWGUN = ITEMS.register("advanced_blowgun",
-            () -> new BlowgunItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS).stacksTo(1)));
+            () -> new BlowgunItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(1)));
+
+    public static final RegistrySupplier<Item> RUBBER = ITEMS.register("rubber",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
+
+    public static final RegistrySupplier<Item> RAW_RUBBER = ITEMS.register("raw_rubber",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
+
+    public static final RegistrySupplier<Item> RUBBER_BALL = ITEMS.register("rubber_ball",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(16)));
 
     public static final RegistrySupplier<Item> SLEEP_POPPY = ITEMS.register("sleep_poppy",
             () -> new SleepPoppyItem(ModBlocks.SLEEP_POPPY.get(), new Item.Properties().tab(ModCreativeModeTabs.PLANTS)));
@@ -33,7 +43,7 @@ public class ModItems {
             () -> new BucketOfTranquilizerItem(new Item.Properties().tab(ModCreativeModeTabs.FOOD).stacksTo(1)));
 
     public static final RegistrySupplier<Item> EMPTY_COCONUT = ITEMS.register("empty_coconut",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.PLANTS)));
+            () -> new BlockItem(ModBlocks.COCONUT_LATEX_COLLECTOR.get(), new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
 
     public static final RegistrySupplier<Item> SEASHELLS_ITEM = ITEMS.register("seashells",
             () -> new BlockItem(ModBlocks.SEASHELLS.get(), new Item.Properties().tab(ModCreativeModeTabs.NATURE)));

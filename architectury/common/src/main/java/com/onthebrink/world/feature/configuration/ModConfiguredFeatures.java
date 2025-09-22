@@ -4,9 +4,11 @@ import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.world.feature.ModFeatures;
 import com.onthebrink.world.feature.foliageplacers.CoconutTreeFoliagePlacer;
+import com.onthebrink.world.feature.foliageplacers.RubberTreeFoliagePlacer;
 import com.onthebrink.world.feature.foliageplacers.WoodsCycadFoliagePlacer;
 import com.onthebrink.world.feature.trunkplacers.CoconutTreeFromSaplingTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.CoconutTreeTrunkPlacer;
+import com.onthebrink.world.feature.trunkplacers.RubberTreeTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.WoodsCycadTrunkPlacer;
 import dev.architectury.platform.Mod;
 import net.minecraft.core.Holder;
@@ -85,6 +87,23 @@ public class ModConfiguredFeatures {
             new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(WOODS_CYCAD_CHECKED, 0.5F)),
                     WOODS_CYCAD_CHECKED));
 
+
+
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> RUBBER_TREE = FeatureUtils.register("rubber_tree", Feature.TREE,
+            new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LOG.get()),
+                    new RubberTreeTrunkPlacer(6, 1, 1),
+                    BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LEAVES.get()),
+                    new RubberTreeFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+                    new TwoLayersFeatureSize(1, 0, 2)
+            ).build());
+
+    public static Holder<PlacedFeature> RUBBER_TREE_CHECKED = PlacementUtils.register("rubber_tree_checked", RUBBER_TREE,
+            PlacementUtils.filteredByBlockSurvival(ModBlocks.RUBBER_TREE_SAPLING.get()));
+
+    public static Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> RUBBER_TREE_SPAWN = FeatureUtils.register("rubber_tree_spawn", Feature.RANDOM_SELECTOR,
+            new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(RUBBER_TREE_CHECKED, 0.5F)),
+                    RUBBER_TREE_CHECKED));
 
 
 

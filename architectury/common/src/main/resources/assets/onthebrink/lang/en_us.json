@@ -7,9 +7,21 @@
   "itemGroup.onthebrink.otb_building": "On The Brink: Building",
   "itemGroup.onthebrink.otb_nature": "On The Brink: Nature",
   "itemGroup.onthebrink.otb_food": "On The Brink: Food",
-  "itemGroup.onthebrink.otb_tools": "On The Brink: Tools",
+  "itemGroup.onthebrink.otb_tools_and_ingredients": "On The Brink: Tools & Ingredients",
 
   "item.onthebrink.advanced_blowgun": "Advanced Blowgun",
+
+  "block.onthebrink.rubber_tree_sapling": "Rubber Tree Sapling",
+  "block.onthebrink.rubber_tree_log": "Rubber Tree Log",
+  "block.onthebrink.stripped_rubber_tree_log": "Stripped Rubber Tree Log",
+  "block.onthebrink.rubber_tree_leaves": "Rubber Tree Leaves",
+
+  "item.onthebrink.rubber": "Rubber",
+  "item.onthebrink.raw_rubber": "Raw Rubber",
+  "item.onthebrink.rubber_ball": "Rubber Ball",
+
+
+  "block.onthebrink.rubber_block": "Rubber Block",
 
   "block.onthebrink.sleep_poppy": "Sleep Poppy",
   "block.onthebrink.sleep_poppy.desc_0": "A rare flower that enjoys swamps,",
@@ -39,6 +51,7 @@
 
   "block.onthebrink.seashells": "Seashells",
   "block.onthebrink.pink_sand_verbena": "Pink Sand Verbena",
+  "block.onthebrink.coconut_latex_collector": "Empty Coconut",
   "item.onthebrink.coconut": "Coconut",
   "item.onthebrink.opened_coconut": "Opened Coconut",
   "item.onthebrink.empty_coconut": "Empty Coconut",

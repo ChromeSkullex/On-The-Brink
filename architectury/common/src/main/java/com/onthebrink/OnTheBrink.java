@@ -2,6 +2,7 @@ package com.onthebrink;
 
 import com.mojang.logging.LogUtils;
 import com.onthebrink.block.ModBlocks;
+import com.onthebrink.client.particle.ModParticles;
 import com.onthebrink.entity.ModEntities;
 import com.onthebrink.event.ModEvents;
 import com.onthebrink.item.ModCompostables;
@@ -25,6 +26,8 @@ public final class OnTheBrink  {
         LifecycleEvent.SERVER_BEFORE_START.register(OnTheBrink::onServerStart);
 
         GroundCoverBiomeConfig.load();
+
+        ModParticles.register();
 
         ModFeatures.register();
 

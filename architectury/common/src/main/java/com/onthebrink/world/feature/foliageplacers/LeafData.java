@@ -5,6 +5,48 @@ import net.minecraft.core.BlockPos;
 import java.util.List;
 
 public class LeafData {
+
+    public static final List<BlockPos> RUBBER_TREE_0 = List.of(
+            // layer 0
+            new BlockPos(0, 0, -1),
+            new BlockPos(-1, 0, 0),
+            new BlockPos(0, 0, 0),
+            new BlockPos(1, 0, 0),
+            new BlockPos(0, 0, 1),
+            // layer -1
+            new BlockPos(-1, -1, -1),
+            new BlockPos(0, -1, -1),
+            new BlockPos(1, -1, -1),
+            new BlockPos(-1, -1, 0),
+            new BlockPos(1, -1, 0),
+            new BlockPos(-1, -1, 1),
+            new BlockPos(0, -1, 1),
+            new BlockPos(1, -1, 1),
+            // layer -2
+            new BlockPos(0, -2, -1),
+            new BlockPos(-1, -2, 0),
+            new BlockPos(1, -2, 0),
+            new BlockPos(0, -2, 1),
+            // layer -3
+            new BlockPos(0, -3, -2),
+            new BlockPos(-1, -3, -1),
+            new BlockPos(0, -3, -1),
+            new BlockPos(1, -3, -1),
+            new BlockPos(-2, -3, 0),
+            new BlockPos(-1, -3, 0),
+            new BlockPos(1, -3, 0),
+            new BlockPos(2, -3, 0),
+            new BlockPos(-1, -3, 1),
+            new BlockPos(0, -3, 1),
+            new BlockPos(1, -3, 1),
+            new BlockPos(0, -3, 2),
+            // layer -4
+            new BlockPos(0, -4, -1),
+            new BlockPos(-1, -4, 0),
+            new BlockPos(1, -4, 0),
+            new BlockPos(0, -4, 1)
+    );
+
     public static final List<BlockPos> COCONUT_TREE_0 = List.of(
             // layer 0
             new BlockPos(-2, 0, -2),

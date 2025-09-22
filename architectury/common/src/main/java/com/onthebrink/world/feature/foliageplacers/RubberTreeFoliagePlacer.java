@@ -2,9 +2,6 @@ package com.onthebrink.world.feature.foliageplacers;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Random;
-import java.util.function.BiConsumer;
-
 import com.onthebrink.misc.MiscRegistry;
 import dev.architectury.platform.Platform;
 import net.minecraft.core.BlockPos;
@@ -15,28 +12,31 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 
-public class WoodsCycadFoliagePlacer extends FoliagePlacer {
-    public static final Codec<WoodsCycadFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) ->
-            foliagePlacerParts(instance).apply(instance, WoodsCycadFoliagePlacer::new)
+import java.util.Random;
+import java.util.function.BiConsumer;
+
+public class RubberTreeFoliagePlacer extends FoliagePlacer {
+    public static final Codec<RubberTreeFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) ->
+            foliagePlacerParts(instance).apply(instance, RubberTreeFoliagePlacer::new)
     );
 
-    public WoodsCycadFoliagePlacer(IntProvider radius, IntProvider offset) {
+    public RubberTreeFoliagePlacer(IntProvider radius, IntProvider offset) {
         super(radius, offset);
     }
 
     @Override
     protected FoliagePlacerType<?> type() {
         if(Platform.isFabric()) {
-            return MiscRegistry.WOODS_CYCAD_FOLIAGE_PLACER;
+            return MiscRegistry.RUBBER_TREE_FOLIAGE_PLACER;
         }
-        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER; // doesn't seem to ever trigger, I'm kinda confused
+        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
     }
 
     @Override
     protected void createFoliage(LevelSimulatedReader reader, BiConsumer<BlockPos, BlockState> leavesPlacer, Random random, TreeConfiguration config, int trunkHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
         BlockPos top = attachment.pos().above(offset); // Start at the top of the trunk
 
-        for (BlockPos leafPos : LeafData.ENCEPHALARTOS_WOODII_0) {
+        for (BlockPos leafPos : LeafData.RUBBER_TREE_0) {
             placeLeavesIfAllowed(reader, leavesPlacer, random, config, top.offset(leafPos));
         }
     }

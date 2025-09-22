@@ -3,14 +3,17 @@ package com.onthebrink.world.feature.trunkplacers;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.onthebrink.block.custom.CoconutFruitBlock;
 import com.onthebrink.misc.MiscRegistry;
 import dev.architectury.platform.Platform;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
@@ -20,20 +23,19 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 
-// same thing as CoconutTreeTrunkPlacer except we are not placing coconuts around the crown.
-public class CoconutTreeFromSaplingTrunkPlacer extends TrunkPlacer {
-    public static final Codec<CoconutTreeFromSaplingTrunkPlacer> CODEC = RecordCodecBuilder.create(
-            instance -> trunkPlacerParts(instance).apply(instance, CoconutTreeFromSaplingTrunkPlacer::new)
+public class RubberTreeTrunkPlacer extends TrunkPlacer {
+    public static final Codec<RubberTreeTrunkPlacer> CODEC = RecordCodecBuilder.create(
+            instance -> trunkPlacerParts(instance).apply(instance, RubberTreeTrunkPlacer::new)
     );
 
-    public CoconutTreeFromSaplingTrunkPlacer(int baseHeight, int heightRandA, int heightRandB) {
+    public RubberTreeTrunkPlacer(int baseHeight, int heightRandA, int heightRandB) {
         super(baseHeight, heightRandA, heightRandB);
     }
 
     @Override
     protected TrunkPlacerType<?> type() {
         if(Platform.isFabric()){
-            return MiscRegistry.COCONUT_TREE_TRUNK_PLACER;
+            return MiscRegistry.RUBBER_TREE_TRUNK_PLACER;
         }
         return TrunkPlacerType.STRAIGHT_TRUNK_PLACER;
     }
@@ -47,14 +49,6 @@ public class CoconutTreeFromSaplingTrunkPlacer extends TrunkPlacer {
             placeLog(level, blockSetter, random, pos.above(i), config);
         }
 
-        BlockState coconutCrown = Registry.BLOCK.getOptional(new ResourceLocation("onthebrink", "coconut_tree_crown"))
-                .map(Block::defaultBlockState)
-                .orElseThrow(() -> new IllegalStateException("Coconut tree crown block not found in registry"));
-
-        BlockPos topPos = pos.above(freeTreeHeight);
-        blockSetter.accept(topPos, coconutCrown);
-        blockSetter.accept(topPos.above(1), coconutCrown);
-
-        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pos.above(freeTreeHeight+1), 0, false));
+        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pos.above(freeTreeHeight), 0, false));
     }
 }

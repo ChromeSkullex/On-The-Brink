@@ -35,7 +35,7 @@ public class CoconutTreeTrunkPlacer extends TrunkPlacer {
     @Override
     protected TrunkPlacerType<?> type() {
         if(Platform.isFabric()){
-            return MiscRegistry.COCONUT_TREE_TRUCK_PLACER;
+            return MiscRegistry.COCONUT_TREE_TRUNK_PLACER;
         }
         return TrunkPlacerType.STRAIGHT_TRUNK_PLACER;
     }

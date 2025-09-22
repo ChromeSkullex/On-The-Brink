@@ -21,5 +21,7 @@ public class FlammableRotatedPillarBlock {
     public static void registerAllStripped() {
         STRIPPED_WOODS_CYCAD_LOG.listen(stripped -> WOODS_CYCAD_LOG.listen(base -> registerStripped(base, stripped)));
         STRIPPED_WOODS_CYCAD_WOOD.listen(stripped -> WOODS_CYCAD_WOOD.listen(base -> registerStripped(base, stripped)));
+
+        STRIPPED_RUBBER_TREE_LOG.listen(stripped -> RUBBER_TREE_LOG.listen(base -> registerStripped(base, stripped)));
     }
 }

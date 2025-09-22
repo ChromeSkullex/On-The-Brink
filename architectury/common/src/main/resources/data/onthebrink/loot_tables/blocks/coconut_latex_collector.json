@@ -1,0 +1,56 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "onthebrink:raw_rubber",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "onthebrink:coconut_latex_collector",
+              "properties": {
+                "is_full": "true"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "onthebrink:empty_coconut",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "onthebrink:coconut_latex_collector",
+              "properties": {
+                "is_full": "false"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "onthebrink:block/rubber_tree_leaves"
+  }
+}

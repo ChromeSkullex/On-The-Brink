@@ -1,8 +1,10 @@
 package com.onthebrink.misc;
 
 import com.onthebrink.world.feature.foliageplacers.CoconutTreeFoliagePlacer;
+import com.onthebrink.world.feature.foliageplacers.RubberTreeFoliagePlacer;
 import com.onthebrink.world.feature.foliageplacers.WoodsCycadFoliagePlacer;
 import com.onthebrink.world.feature.trunkplacers.CoconutTreeTrunkPlacer;
+import com.onthebrink.world.feature.trunkplacers.RubberTreeTrunkPlacer;
 import com.onthebrink.world.feature.trunkplacers.WoodsCycadTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
@@ -14,7 +16,10 @@ public class MiscRegistry {
     public static TrunkPlacerType<WoodsCycadTrunkPlacer> WOODS_CYCAD_TRUNK_PLACER;
     public static FoliagePlacerType<WoodsCycadFoliagePlacer> WOODS_CYCAD_FOLIAGE_PLACER;
 
-    public static TrunkPlacerType<CoconutTreeTrunkPlacer> COCONUT_TREE_TRUCK_PLACER;
+    public static TrunkPlacerType<CoconutTreeTrunkPlacer> COCONUT_TREE_TRUNK_PLACER;
     public static FoliagePlacerType<CoconutTreeFoliagePlacer> COCONUT_TREE_FOLIAGE_PLACER;
+
+    public static TrunkPlacerType<RubberTreeTrunkPlacer> RUBBER_TREE_TRUNK_PLACER;
+    public static FoliagePlacerType<RubberTreeFoliagePlacer> RUBBER_TREE_FOLIAGE_PLACER;
 
 }

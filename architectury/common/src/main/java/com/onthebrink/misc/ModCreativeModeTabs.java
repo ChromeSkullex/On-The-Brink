@@ -33,8 +33,8 @@ public class ModCreativeModeTabs {
             () -> new ItemStack(ModItems.OPENED_COCONUT.get())
     );
 
-    public static final CreativeModeTab TOOLS = CreativeTabRegistry.create(
-            OnTheBrink.location("otb_tools"),
+    public static final CreativeModeTab TOOLS_AND_INGREDIENTS = CreativeTabRegistry.create(
+            OnTheBrink.location("otb_tools_and_ingredients"),
             () -> new ItemStack(ModItems.ADVANCED_BLOWGUN.get())
     );
 

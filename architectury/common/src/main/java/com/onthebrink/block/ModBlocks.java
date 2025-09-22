@@ -6,8 +6,8 @@ import com.onthebrink.item.ModItems;
 import com.onthebrink.item.custom.CoconutItem;
 import com.onthebrink.misc.ModCreativeModeTabs;
 import com.onthebrink.world.feature.tree.CoconutTreeGrower;
+import com.onthebrink.world.feature.tree.RubberTreeGrower;
 import com.onthebrink.world.feature.tree.WoodsCycadGrower;
-import dev.architectury.platform.Mod;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
@@ -23,7 +23,11 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.BLOCK_REGISTRY);
 
-    // ------ BUILDING --------
+    // ------ BUILDING / MACHINES --------
+
+    public static final RegistrySupplier<CoconutLatexCollectorBlock> COCONUT_LATEX_COLLECTOR = registerBlockNoItem("coconut_latex_collector", () -> new CoconutLatexCollectorBlock(BlockBehaviour.Properties.copy(Blocks.COCOA).noCollission().randomTicks()));
+
+    public static final RegistrySupplier<RubberBlock> RUBBER_BLOCK = registerBlock("rubber_block", () -> new RubberBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).friction(0.6f /* default friction */)), ModCreativeModeTabs.BUILDING);
 
     public static final RegistrySupplier<PoppyTeaCauldronBlock> POPPY_TEA_CAULDRON = registerBlockNoItem("poppy_tea_cauldron", () -> new PoppyTeaCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).randomTicks()));
 
@@ -76,6 +80,16 @@ public class ModBlocks {
 
 
     // ------- TREES -------
+
+    // RUBBER TREE
+
+    public static final RegistrySupplier<SaplingBlock> RUBBER_TREE_SAPLING = registerBlock("rubber_tree_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.TREES_AND_WOOD);
+
+    public static final RegistrySupplier<LeavesBlock> RUBBER_TREE_LEAVES = registerBlock("rubber_tree_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), ModCreativeModeTabs.TREES_AND_WOOD);
+
+    public static final RegistrySupplier<RotatedPillarBlock> RUBBER_TREE_LOG = registerBlock("rubber_tree_log", () -> FlammableRotatedPillarBlock.get(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)), ModCreativeModeTabs.TREES_AND_WOOD);
+
+    public static final RegistrySupplier<RotatedPillarBlock> STRIPPED_RUBBER_TREE_LOG = registerBlock("stripped_rubber_tree_log", () -> FlammableRotatedPillarBlock.get(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)), ModCreativeModeTabs.TREES_AND_WOOD);
 
     // COCONUT TREE
 
