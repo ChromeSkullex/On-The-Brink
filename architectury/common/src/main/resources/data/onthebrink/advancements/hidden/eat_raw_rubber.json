@@ -1,0 +1,28 @@
+{
+  "parent": "onthebrink:root",
+  "criteria": {
+    "eat_rubber": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": ["onthebrink:raw_rubber"]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "onthebrink:raw_rubber"
+    },
+    "title": {
+      "translate": "advancement.onthebrink.eat_raw_rubber.title"
+    },
+    "description": {
+      "translate": "advancement.onthebrink.eat_raw_rubber.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  }
+}

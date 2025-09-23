@@ -15,10 +15,16 @@
   "block.onthebrink.rubber_tree_log": "Rubber Tree Log",
   "block.onthebrink.stripped_rubber_tree_log": "Stripped Rubber Tree Log",
   "block.onthebrink.rubber_tree_leaves": "Rubber Tree Leaves",
+  "item.onthebrink.rubber_seed_pod": "Rubber Seed Pod",
 
   "item.onthebrink.rubber": "Rubber",
   "item.onthebrink.raw_rubber": "Raw Rubber",
   "item.onthebrink.rubber_ball": "Rubber Ball",
+  "item.onthebrink.burnt_rubber": "Burnt Rubber",
+
+  "item.onthebrink.burnt_rubber.desc_0": "Oops! Too hot. Rubber is made in a",
+  "item.onthebrink.burnt_rubber.desc_1": "Smoker, not a Furnace.",
+  "item.onthebrink.burnt_rubber.desc_2": "This still works as charcoal, though.",
 
 
   "block.onthebrink.rubber_block": "Rubber Block",
@@ -51,27 +57,28 @@
 
   "block.onthebrink.seashells": "Seashells",
   "block.onthebrink.pink_sand_verbena": "Pink Sand Verbena",
+
   "block.onthebrink.coconut_latex_collector": "Empty Coconut",
+  "item.onthebrink.empty_coconut": "Empty Coconut",
+
+  "item.onthebrink.empty_coconut.desc_0": "Strip a log from a Rubber Tree",
+  "item.onthebrink.empty_coconut.desc_1": "at eye height, then use an",
+  "item.onthebrink.empty_coconut.desc_2": "empty coconut on the log to",
+  "item.onthebrink.empty_coconut.desc_3": "gather latex that can be smoked",
+  "item.onthebrink.empty_coconut.desc_4": "into rubber.",
+
+
   "item.onthebrink.coconut": "Coconut",
   "item.onthebrink.opened_coconut": "Opened Coconut",
-  "item.onthebrink.empty_coconut": "Empty Coconut",
   "block.onthebrink.coconut_tree_log": "Coconut Tree Log",
   "block.onthebrink.coconut_tree_crown": "Coconut Tree Crown",
   "block.onthebrink.coconut_tree_leaves": "Coconut Tree Leaves",
+
   "block.onthebrink.african_violet": "African Violet",
-  "block.onthebrink.chain_link": "Chain Link Fence",
-  "block.onthebrink.wooden_crate": "Wooden Crate",
-  "block.onthebrink.glass_sponge": "Glass Sponge",
-  "block.onthebrink.wet_glass_sponge": "Wet Glass Sponge",
-  "block.onthebrink.bone_wall": "Bone Wall",
-  "block.onthebrink.cracked_bone_block": "Cracked Bone Block",
-  "block.onthebrink.cracked_solid_bone": "Cracked Solid Bone",
-  "block.onthebrink.bone_stairs": "Bone Stairs",
-  "block.onthebrink.bone_slab": "Bone Slab",
-  "block.onthebrink.solid_bone": "Solid Bone",
-  "block.onthebrink.barnacles": "Barnacles",
-  "block.onthebrink.brown_mud": "Brown Mud",
+
   "block.onthebrink.chocolate_cosmos": "Chocolate Cosmos",
+
+
   "block.onthebrink.woods_cycad_leaves": "Wood's Cycad Leaves",
   "block.onthebrink.woods_cycad_sprout": "Wood's Cycad Sprout",
   "block.onthebrink.woods_cycad_log": "Wood's Cycad Log",
@@ -85,5 +92,37 @@
   "block.onthebrink.woods_cycad_fence_gate": "Wood's Cycad Fence Gate",
   "block.onthebrink.woods_cycad_slab": "Wood's Cycad Slab",
   "block.onthebrink.woods_cycad_stairs": "Wood's Cycad Stairs",
-  "block.onthebrink.woods_cycad_trapdoor": "Wood's Cycad Trapdoor"
+  "block.onthebrink.woods_cycad_trapdoor": "Wood's Cycad Trapdoor",
+
+  "item.onthebrink.sago_flour": "Sago Flour",
+  "item.onthebrink.sago_flour.desc_0": "Raw cycad starch, detoxified with milk.",
+
+  "item.onthebrink.sago_bread": "Sago Bread",
+
+  "item.onthebrink.bowl_of_sago_pearls": "Bowl of Sago Pearls",
+  "item.onthebrink.bowl_of_sago_pearls.desc_0": "Like caviar, but vegan.",
+
+
+  "block.onthebrink.chain_link": "Chain Link Fence",
+  "block.onthebrink.wooden_crate": "Wooden Crate",
+
+  "block.onthebrink.glass_sponge": "Glass Sponge",
+  "block.onthebrink.wet_glass_sponge": "Wet Glass Sponge",
+  "block.onthebrink.barnacles": "Barnacles",
+
+  "block.onthebrink.bone_wall": "Bone Wall",
+  "block.onthebrink.cracked_bone_block": "Cracked Bone Block",
+  "block.onthebrink.cracked_solid_bone": "Cracked Solid Bone",
+  "block.onthebrink.bone_stairs": "Bone Stairs",
+  "block.onthebrink.bone_slab": "Bone Slab",
+  "block.onthebrink.solid_bone": "Solid Bone",
+
+  "block.onthebrink.brown_mud": "Brown Mud",
+
+
+  "advancement.onthebrink.root.title": "On The Brink",
+  "advancement.onthebrink.root.description": "WIP description",
+
+  "advancement.onthebrink.eat_raw_rubber.title": "But why?",
+  "advancement.onthebrink.eat_raw_rubber.description": "Eat raw rubber... for some reason..."
 }

@@ -65,7 +65,7 @@ public class CoconutLatexCollectorBlock extends HorizontalDirectionalBlock {
             return;
         }
 
-        if (random.nextInt(20) == 0) {
+        if (random.nextInt(40) == 0) {
             level.setBlock(pos, state.setValue(IS_FULL, true), 3);
         }
     }

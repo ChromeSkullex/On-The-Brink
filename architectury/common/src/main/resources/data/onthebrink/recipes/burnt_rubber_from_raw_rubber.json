@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "onthebrink:raw_rubber"
+  },
+  "result": "onthebrink:burnt_rubber",
+  "experience": 0.35,
+  "cookingtime": 200
+}

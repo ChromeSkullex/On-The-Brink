@@ -10,7 +10,7 @@ public class LatexDripParticle extends TextureSheetParticle {
         super(level, x, y, z, dx, dy, dz);
 
         this.gravity = 1.0F;
-        this.lifetime = 10;           // in ticks
+        this.lifetime = 7;           // in ticks
         this.xd = dx;
         this.yd = dy;
         this.zd = dz;

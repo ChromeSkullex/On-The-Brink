@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "onthebrink:raw_rubber"
+  },
+  "result": "onthebrink:rubber",
+  "experience": 0.35,
+  "cookingtime": 100
+}

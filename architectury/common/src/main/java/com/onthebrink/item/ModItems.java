@@ -2,7 +2,6 @@ package com.onthebrink.item;
 
 import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
-import com.onthebrink.block.custom.CoconutLatexCollectorBlock;
 import com.onthebrink.item.custom.*;
 import com.onthebrink.misc.ModCreativeModeTabs;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -18,11 +17,24 @@ public class ModItems {
     public static final RegistrySupplier<Item> ADVANCED_BLOWGUN = ITEMS.register("advanced_blowgun",
             () -> new BlowgunItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(1)));
 
+    public static final RegistrySupplier<Item> SAGO_FLOUR = ITEMS.register("sago_flour",
+            () -> new SagoFlourItem(new Item.Properties().tab(ModCreativeModeTabs.FOOD)));
+
+    public static final RegistrySupplier<Item> SAGO_BREAD = ITEMS.register("sago_bread",
+            () -> new SagoBreadItem(new Item.Properties().tab(ModCreativeModeTabs.FOOD)));
+
+    public static final RegistrySupplier<Item> BOWL_OF_SAGO_PEARLS = ITEMS.register("bowl_of_sago_pearls",
+            () -> new BowlOfSagoPearlsItem(new Item.Properties().tab(ModCreativeModeTabs.FOOD).stacksTo(1)));
+
+
     public static final RegistrySupplier<Item> RUBBER = ITEMS.register("rubber",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
 
     public static final RegistrySupplier<Item> RAW_RUBBER = ITEMS.register("raw_rubber",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
+            () -> new RawRubberItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
+
+    public static final RegistrySupplier<Item> BURNT_RUBBER = ITEMS.register("burnt_rubber",
+            () -> new BurntRubberItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
 
     public static final RegistrySupplier<Item> RUBBER_BALL = ITEMS.register("rubber_ball",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(16)));
@@ -43,7 +55,7 @@ public class ModItems {
             () -> new BucketOfTranquilizerItem(new Item.Properties().tab(ModCreativeModeTabs.FOOD).stacksTo(1)));
 
     public static final RegistrySupplier<Item> EMPTY_COCONUT = ITEMS.register("empty_coconut",
-            () -> new BlockItem(ModBlocks.COCONUT_LATEX_COLLECTOR.get(), new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
+            () -> new EmptyCoconutItem(ModBlocks.COCONUT_LATEX_COLLECTOR.get(), new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
 
     public static final RegistrySupplier<Item> SEASHELLS_ITEM = ITEMS.register("seashells",
             () -> new BlockItem(ModBlocks.SEASHELLS.get(), new Item.Properties().tab(ModCreativeModeTabs.NATURE)));
@@ -55,7 +67,7 @@ public class ModItems {
                             .stacksTo(1)
                             .food(new FoodProperties.Builder()
                                     .nutrition(4)       // 2 drumsticks
-                                    .saturationMod(0.6f) // saturation
+                                    .saturationMod(3.6f) // carrot saturation
                                     .build())
             )
     );

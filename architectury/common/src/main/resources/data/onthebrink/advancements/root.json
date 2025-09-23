@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "onthebrink:african_violet"
+    },
+    "title": {
+      "translate": "advancement.onthebrink.root.title"
+    },
+    "description": {
+      "translate": "advancement.onthebrink.root.description"
+    },
+    "background": "onthebrink:textures/gui/advancements/backgrounds/woods_cycad_log_side.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  }
+}

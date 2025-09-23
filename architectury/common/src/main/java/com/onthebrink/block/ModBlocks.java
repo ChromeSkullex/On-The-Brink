@@ -85,6 +85,10 @@ public class ModBlocks {
 
     public static final RegistrySupplier<SaplingBlock> RUBBER_TREE_SAPLING = registerBlock("rubber_tree_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.TREES_AND_WOOD);
 
+    // defined here so that we can control the order it appears in the creative mode tab
+    public static final RegistrySupplier<Item> RUBBER_SEED_POD_ITEM = ModItems.ITEMS.register("rubber_seed_pod",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TREES_AND_WOOD).stacksTo(16)));
+
     public static final RegistrySupplier<LeavesBlock> RUBBER_TREE_LEAVES = registerBlock("rubber_tree_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), ModCreativeModeTabs.TREES_AND_WOOD);
 
     public static final RegistrySupplier<RotatedPillarBlock> RUBBER_TREE_LOG = registerBlock("rubber_tree_log", () -> FlammableRotatedPillarBlock.get(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)), ModCreativeModeTabs.TREES_AND_WOOD);
