@@ -19,7 +19,7 @@ public class OTBSpawnEgg extends ArchitecturySpawnEggItem {
     public OTBSpawnEgg(AnimalDefinition animalDefinition, RegistrySupplier<? extends EntityType<? extends Mob>> entityType) {
         super(entityType, animalDefinition.primary_color,animalDefinition.secondary_color,
                 new Item.Properties().tab(CreativeModeTab.TAB_MISC));
-        this.name = new TranslatableComponent("item." + OnTheBrink.MOD_ID +"."+animalDefinition.id);
+        this.name = new TranslatableComponent("item." + OnTheBrink.MOD_ID +"."+animalDefinition.id+"_spawn_egg");
     }
 
 @Override

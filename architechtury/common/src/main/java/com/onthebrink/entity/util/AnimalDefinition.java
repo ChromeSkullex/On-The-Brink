@@ -14,12 +14,18 @@ public class AnimalDefinition {
     public int primary_color;
     public int secondary_color;
     public Item spawnEggItem;
+    public String diet;
     //    Textures
     public ResourceLocation female_sleeping_texture;
     public ResourceLocation female_texture;
     public ResourceLocation male_sleeping_texture;
     public ResourceLocation male_texture;
     public ResourceLocation baby_texture;
+    // Book Textures
+
+    public ResourceLocation animal_book_image;
+    public int textureWidth;
+    public int textureHeight;
 
 
     public Class<? extends AnimalBase> getEntityClass() {
@@ -33,4 +39,5 @@ public class AnimalDefinition {
             throw new RuntimeException("Failed to load entity class: " + className, e);
         }
     }
+
 }

@@ -67,7 +67,13 @@ public class ModEntities {
                 def.hp = animalRoot.get("hp").getAsInt();
                 def.primary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("primary").getAsString(),16);
                 def.secondary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("secondary").getAsString(),16);
+                def.diet = animalRoot.get("diet").getAsString();
 
+                // Book Image
+                def.animal_book_image = OnTheBrink.location("textures/gui/"+def.id+".png");
+                JsonObject textureBookSizes = animalRoot.getAsJsonObject("book");
+                def.textureWidth = textureBookSizes.get("textureWidth").getAsInt();
+                def.textureHeight = textureBookSizes.get("textureHeight").getAsInt();
 
                 OnTheBrink.LOGGER.info("Loading animal: {}", def.id);
 

@@ -1,243 +1,322 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"african_penguin.animation.walk": {
+		"animation.walk": {
+			"animation_length": 1.5,
 			"loop": true,
-			"animation_length": 1,
 			"bones": {
+				"lowerBody": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -1]
+						},
+						"0.75": {
+							"vector": [0, 0, 1]
+						},
+						"1.5": {
+							"vector": [0, 0, -1]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.375": {
+							"vector": [0, 0.3, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						},
+						"1.125": {
+							"vector": [0, 0.3, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
 				"upperBody": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
+							"vector": [0, 0, 0.5]
 						},
-						"0.5": {
-							"vector": [0, 0, 1],
-							"easing": "linear"
+						"0.75": {
+							"vector": [0, 0, -0.5]
 						},
-						"1.0": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
+						"1.5": {
+							"vector": [0, 0, 0.5]
+						}
+					}
+				},
+				"neck": {
+					"rotation": {
+						"0.0": {
+							"vector": [-1.5, 0, -1.5]
+						},
+						"0.375": {
+							"vector": [0, 0, 0.5]
+						},
+						"0.75": {
+							"vector": [-3, 0, 2]
+						},
+						"1.125": {
+							"vector": [0, 0, 0.5]
+						},
+						"1.5": {
+							"vector": [-1.5, 0, -1.5]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [2, 0, 0]
+						},
+						"0.75": {
+							"vector": [-2, 0, 0]
+						},
+						"1.5": {
+							"vector": [2, 0, 0]
 						}
 					}
 				},
 				"rightThigh": {
 					"rotation": {
 						"0.0": {
-							"vector": [-7.5, 0, 0],
-							"easing": "linear"
+							"vector": [0, 0, 3]
 						},
-						"0.5": {
-							"vector": [22.5, 0, 0],
-							"easing": "linear"
+						"0.75": {
+							"vector": [20, -1, -2]
 						},
-						"0.9583": {
-							"vector": [-7.5, 0, 0],
-							"easing": "linear"
+						"1.5": {
+							"vector": [0, 0, 3]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0.4, -0.8]
+						},
+						"0.75": {
+							"vector": [0, -0.2, 0]
+						},
+						"1.0": {
+							"vector": [0, 0.4, 0.5]
+						},
+						"1.5": {
+							"vector": [0, 0.4, -0.8]
 						}
 					}
 				},
 				"leftThigh": {
 					"rotation": {
 						"0.0": {
-							"vector": [22.5, 0, 0],
-							"easing": "linear"
+							"vector": [20, 1, 2]
 						},
-						"0.5": {
-							"vector": [-7.5, 0, 0],
-							"easing": "linear"
+						"0.75": {
+							"vector": [0, 0, -3]
 						},
-						"0.9583": {
-							"vector": [22.5, 0, 0],
-							"easing": "linear"
+						"1.5": {
+							"vector": [20, 1, 2]
 						}
-					}
-				},
-				"leftArm": {
-					"rotation": {
-						"vector": [0, -40, 0],
-						"easing": "linear"
-					}
-				},
-				"rightArm": {
-					"rotation": {
-						"vector": [0, 37.5, 0],
-						"easing": "linear"
-					}
-				},
-				"lowerBody2": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, -2.5],
-							"easing": "linear"
-						},
-						"0.5": {
-							"vector": [0, 0, 5],
-							"easing": "linear"
-						},
-						"1.0": {
-							"vector": [0, 0, -2.5],
-							"easing": "linear"
-						}
-					}
-				}
-			}
-		},
-		"african_penguin.animation.idle": {
-			"loop": true,
-			"animation_length": 1.75,
-			"bones": {
-				"upperBody": {
+					},
 					"position": {
 						"0.0": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
+							"vector": [0, -0.2, 0]
 						},
-						"0.125": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
+						"0.375": {
+							"vector": [0, 0.4, 0.5]
 						},
-						"0.1667": [0, 0.01177, 0],
-						"0.7083": [0, 0.32601, 0],
-						"0.9167": [0, 0.40114, 0],
-						"0.9583": {
-							"vector": [0, 0.4, 0],
-							"easing": "linear"
+						"0.75": {
+							"vector": [0, 0.4, -0.8]
 						},
-						"1.0": [0, 0.39258, 0],
-						"1.2083": {
-							"vector": [0, 0.4, 0],
-							"easing": "linear"
-						},
-						"1.25": [0, 0.37511, 0],
-						"1.2917": [0, 0.31453, 0],
-						"1.4167": [0, 0.08814, 0],
-						"1.4583": [0, 0.03399, 0],
-						"1.5": [0, -0.00001, 0],
-						"1.5417": [0, -0.01164, 0],
-						"1.5833": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
+						"1.5": {
+							"vector": [0, -0.2, 0]
 						}
-					}
-				},
-				"neck": {
-					"position": {
-						"vector": [0, 0, 0],
-						"easing": "linear"
-					}
-				},
-				"head": {
-					"position": {
-						"vector": [0, 0, 0],
-						"easing": "linear"
-					}
-				},
-				"leftArm": {
-					"position": {
-						"vector": [0, -0.25, 0],
-						"easing": "linear"
-					}
-				},
-				"rightArm": {
-					"position": {
-						"vector": [0, -0.25, 0],
-						"easing": "linear"
-					}
-				},
-				"lowerBody2": {
-					"position": {
-						"0.0": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
-						},
-						"0.0417": [0, 0.01087, 0],
-						"0.5833": [0, 0.29229, 0],
-						"0.8333": [0, 0.39788, 0],
-						"0.875": {
-							"vector": [0, 0.39, 0],
-							"easing": "linear"
-						},
-						"0.9167": [0, 0.35189, 0],
-						"1.125": [0, 0.31478, 0],
-						"1.1667": {
-							"vector": [0, 0.3, 0],
-							"easing": "linear"
-						},
-						"1.2083": [0, 0.27517, 0],
-						"1.5": [0, 0.03404, 0],
-						"1.5417": [0, 0.01063, 0],
-						"1.5833": {
-							"vector": [0, 0, 0],
-							"easing": "linear"
-						}
-					}
-				}
-			}
-		},
-		"african_penguin.animation.swim": {
-			"loop": true,
-			"animation_length": 0.75,
-			"bones": {
-				"lowerBody": {
-					"rotation": {
-						"vector": [72.5, 0, 0],
-						"easing": "linear"
-					}
-				},
-				"neck": {
-					"rotation": {
-						"vector": [15, 0, 0],
-						"easing": "linear"
-					}
-				},
-				"head": {
-					"rotation": {
-						"vector": [-80, 0, 0],
-						"easing": "linear"
 					}
 				},
 				"rightFoot": {
 					"rotation": {
-						"vector": [87.5, 0, 0],
-						"easing": "linear"
+						"0.0": {
+							"vector": [-1, 0, 0]
+						},
+						"0.375": {
+							"vector": [-10, 0, 0]
+						},
+						"0.75": {
+							"vector": [-10, 0, 0]
+						},
+						"1.0": {
+							"vector": [-15, 0, 0]
+						},
+						"1.5": {
+							"vector": [-1, 0, 0]
+						}
 					}
 				},
 				"leftFoot": {
 					"rotation": {
-						"vector": [77.5, 0, 0],
-						"easing": "linear"
-					}
-				},
-				"leftArm": {
-					"rotation": {
 						"0.0": {
-							"vector": [-249.10212, 52.74575, 77.03378],
-							"easing": "linear"
+							"vector": [-10, 0, 0]
 						},
-						"0.4167": {
-							"vector": [-98.99301, 46.0724, 224.16551],
-							"easing": "linear"
+						"0.375": {
+							"vector": [-15, 0, 0]
 						},
 						"0.75": {
-							"vector": [-249.10212, 52.74575, 77.03378],
-							"easing": "linear"
+							"vector": [-1, 0, 0]
+						},
+						"1.125": {
+							"vector": [-10, 0, 0]
+						},
+						"1.5": {
+							"vector": [-10, 0, 0]
 						}
 					}
 				},
 				"rightArm": {
 					"rotation": {
 						"0.0": {
-							"vector": [-249.10212, -52.74575, -77.03378],
-							"easing": "linear"
-						},
-						"0.4167": {
-							"vector": [-98.99301, -46.0724, -224.16551],
-							"easing": "linear"
+							"vector": [0, 0, 1]
 						},
 						"0.75": {
-							"vector": [-249.10212, -52.74575, -77.03378],
-							"easing": "linear"
+							"vector": [0, 0, -2]
+						},
+						"1.5": {
+							"vector": [0, 0, 1]
+						}
+					}
+				},
+				"leftArm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -1]
+						},
+						"0.75": {
+							"vector": [0, 0, 2]
+						},
+						"1.5": {
+							"vector": [0, 0, -1]
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 1]
+						},
+						"0.75": {
+							"vector": [0, 0, -2]
+						},
+						"1.5": {
+							"vector": [0, 0, 1]
+						}
+					}
+				}
+			}
+		},
+		"animation.idle": {
+			"animation_length": 4.0,
+			"loop": true,
+			"bones": {
+				"lowerBody": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0.9, 0]
+						},
+						"4.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"upperBody": {
+					"rotation": {
+						"0.0": {
+							"vector": [-2.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [-5, 0, 0]
+						},
+						"4.0": {
+							"vector": [-2.5, 0, 0]
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"vector": [2.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [5, 0, 0]
+						},
+						"4.0": {
+							"vector": [2.5, 0, 0]
+						}
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 2.5]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 5]
+						},
+						"4.0": {
+							"vector": [0, 0, 2.5]
+						}
+					}
+				},
+				"leftArm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -2.5]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, -5]
+						},
+						"4.0": {
+							"vector": [0, 0, -2.5]
+						}
+					}
+				},
+				"rightThigh": {
+					"position": {
+						"0.0": {
+							"vector": [0,0,0]
+						},
+						"2.0": {
+							"vector": [0,-0.8,-0.3]
+						},
+						"4.0": {
+							"vector": [0,0,0]
+						}
+					}
+				},
+				"leftThigh": {
+					"position": {
+						"0.0": {
+							"vector": [0,0,0]
+						},
+						"2.0": {
+							"vector": [0,-0.8,-0.3]
+						},
+						"4.0": {
+							"vector": [0,0,0]
 						}
 					}
 				}

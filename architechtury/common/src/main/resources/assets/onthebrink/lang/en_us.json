@@ -1,8 +1,35 @@
 {
-  "item.onthebrink.penguin_temp_spawn_egg": "Penguin Temp Spawn Egg",
   "item.onthebrink.animal_book": "Animal Book",
   "book.onthebrink.gender": "Gender: %s",
   "book.onthebrink.gender.female": "Female",
   "book.onthebrink.gender.male": "Male",
-  "book.onthebrink.gender.desc": "Gender of the Animal"
+  "book.onthebrink.gender.desc": "Gender of the Animal",
+  "book.onthebrink.status.age": "Age",
+  "book.onthebrink.status.health": "Health",
+  "book.onthebrink.status.hunger": "Hunger",
+  "book.onthebrink.status.diet": "Diet",
+  "book.onthebrink.name.label.common.african_penguin": "African Penguin",
+  "book.onthebrink.name.label.scientific.african_penguin": "Spheniscus demersus",
+  "book.onthebrink.name.label.conservation_status": "Conservation Status",
+  "book.onthebrink.name.label.critically_endangered": "Critically Endangered",
+  "book.onthebrink.name.label.critically_endangered_abbr": "CR",
+  "book.onthebrink.name.label.skittish": "Skittish",
+  "book.onthebrink.name.label.command_item": "Command Item",
+  "book.onthebrink.name.label.activity": "Activity",
+  "book.onthebrink.name.label.spawn_rate": "Spawn Rate",
+
+  "book.onthebrink.name.label.omnivore": "Omnivore",
+  "book.onthebrink.name.label.carnivore": "Carnivore",
+  "book.onthebrink.name.label.herbivore": "Herbivore",
+  "book.onthebrink.name.label.insectivore": "Insectivore",
+  "book.onthebrink.name.label.piscivore": "Piscivore",
+  "book.onthebrink.name.label.frugivore": "Frugivore",
+
+  "book.onthebrink.name.label.diurnal": "Diurnal",
+  "book.onthebrink.name.label.crepuscular": "Crepuscular",
+  "book.onthebrink.name.label.matutinal": "Matutinal",
+  "book.onthebrink.name.label.nocturnal": "Nocturnal",
+
+  "item.onthebrink.penguin_temp_spawn_egg": "Penguin Temp Spawn Egg",
+  "item.onthebrink.african_penguin_spawn_egg": "African Penguin Spawn Egg"
 }

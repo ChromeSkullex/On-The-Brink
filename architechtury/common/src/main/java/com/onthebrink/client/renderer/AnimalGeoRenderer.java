@@ -22,4 +22,6 @@ public class AnimalGeoRenderer<T extends AnimalBase> extends  FixedGeoEntityRend
     }
 
 
+
+
 }

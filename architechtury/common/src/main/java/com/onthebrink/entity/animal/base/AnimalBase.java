@@ -1,6 +1,8 @@
 package com.onthebrink.entity.animal.base;
 
 import com.onthebrink.OnTheBrink;
+import com.onthebrink.entity.ModEntities;
+import com.onthebrink.entity.util.AnimalDefinition;
 import com.onthebrink.entity.util.Gender;
 import dev.architectury.extensions.network.EntitySpawnExtension;
 import net.minecraft.nbt.CompoundTag;
@@ -13,9 +15,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -36,7 +37,7 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
     private static final EntityDataAccessor<Integer> HAPPINESS = SynchedEntityData.defineId(AnimalBase.class, EntityDataSerializers.INT);
 //    private Gender gender = Gender.random(random);
     private static final EntityDataAccessor<Byte> GENDER = SynchedEntityData.defineId(AnimalBase.class, EntityDataSerializers.BYTE);
-
+    private static final EntityDataAccessor<Integer> AGE = SynchedEntityData.defineId(AnimalBase.class, EntityDataSerializers.INT);
 
     /**
      * <h1>***** Data Save/load *****</h1>
@@ -47,6 +48,7 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         entityData.define(HUNGER, getMaxHunger());
         entityData.define(HAPPINESS, 0);
         entityData.define(GENDER, (byte)Gender.random(random).ordinal());
+        entityData.define(AGE, 0);
     }
 
     @Override
@@ -55,6 +57,7 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         this.setHappiness(compound.getInt("Happiness"));
         this.setHunger(compound.getInt("Hunger"));
         this.setGender(Gender.values()[compound.getInt("Gender")]);
+        this.setAge(compound.getInt("Age"));
 
     }
 
@@ -64,6 +67,7 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         compound.putInt("Hunger", getHunger());
         compound.putInt("Happiness", getHappiness());
         compound.putByte("Gender", (byte) getGender().ordinal());
+        compound.putInt("Age", getAge());
 
     }
 
@@ -92,6 +96,11 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
     // From IAnimatable
     public AnimationFactory getFactory() {
         return factory;
+    }
+
+    @Override
+    public @NotNull EntityDimensions getDimensions(Pose poseIn) {
+        return getType().getDimensions().scale(1f);
     }
 
 
@@ -128,6 +137,14 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
         return Gender.values()[this.entityData.get(GENDER)];
     }
 
+    // Age
+    public int getAge(){
+        return this.entityData.get(AGE);
+    }
+    public void setAge(int age){
+            entityData.set(AGE, age);
+    }
+
     // ALL OTHER FUNCTIONS
 
     @Override
@@ -160,6 +177,10 @@ public class AnimalBase extends TamableAnimal implements AnimalAnimatable<Animal
 
 
 
+    public AnimalDefinition getDefinition() {
+        String id = EntityType.getKey(this.getType()).getPath();
+        return ModEntities.DEFINITIONS.get(id);
+    }
 
 }
 

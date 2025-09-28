@@ -53,7 +53,7 @@ public class ClientInit {
         InteractionEvent.INTERACT_ENTITY.register(((player, entity, interactionHand) -> {
             if (player.level.isClientSide()) {
                 if(player.getItemInHand(interactionHand).is(ModItems.ANIMAL_BOOK.get())){
-                    if (entity instanceof Animal animal){
+                    if (entity instanceof AnimalBase animal){
                         Minecraft.getInstance().setScreen(new OnTheBrinkScreen(animal));
 
                     }

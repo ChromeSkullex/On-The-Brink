@@ -1,28 +1,20 @@
 {
   "animals": {
-    "penguin_temp": {
-      "alias": "Temp Penguin",
-      "className": "com.onthebrink.entity.animal.amphibious.PenguinTemp",
-      "type": "amphibious",
-      "size": {
-        "width": 0.5,
-        "height": 0.5
-      },
-      "hp": 10,
-      "colors": {
-        "primary": "dcdcde",
-        "secondary": "c5cae3"
-      }
-    },
     "african_penguin": {
       "alias": "African Penguin",
       "className": "com.onthebrink.entity.animal.amphibious.AfricanPenguin",
       "type": "amphibious",
-      "size": { "width": 0.5, "height": 1.0 },
-      "hp": 12,
+      "size": { "width": 0.25, "height": 0.5 },
+      "hp": 4,
+      "diet": "piscivore",
+      "activity": "",
       "colors": {
         "primary": "16171c",
         "secondary": "c5cae3"
+      },
+      "book": {
+        "textureWidth": 2149,
+        "textureHeight": 1400
       }
     }
   }
