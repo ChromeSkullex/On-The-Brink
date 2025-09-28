@@ -68,6 +68,8 @@ public class ModEntities {
                 def.primary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("primary").getAsString(),16);
                 def.secondary_color = Integer.parseInt(animalRoot.getAsJsonObject("colors").get("secondary").getAsString(),16);
                 def.diet = animalRoot.get("diet").getAsString();
+                def.activity = animalRoot.get("activity").getAsString();
+                def.command_item = animalRoot.get("command_item").getAsString();
 
                 // Book Image
                 def.animal_book_image = OnTheBrink.location("textures/gui/"+def.id+".png");

@@ -15,6 +15,8 @@ public class AnimalDefinition {
     public int secondary_color;
     public Item spawnEggItem;
     public String diet;
+    public String activity;
+    public String command_item;
     //    Textures
     public ResourceLocation female_sleeping_texture;
     public ResourceLocation female_texture;

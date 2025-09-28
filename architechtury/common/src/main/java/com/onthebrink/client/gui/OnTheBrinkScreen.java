@@ -164,6 +164,24 @@ public class OnTheBrinkScreen extends Screen {
          * Activity
          * Spawn Rate
          * */
+        int container_data_y = 67;
+        Component temperament_title = new TranslatableComponent("book." + OnTheBrink.MOD_ID +".name.label.temperament");
+        Component command_item_title = new TranslatableComponent("book." + OnTheBrink.MOD_ID +".name.label.command_item");
+        Component activity_title = new TranslatableComponent("book." + OnTheBrink.MOD_ID +".name.label.activity");
+        Component spawn_rate_title = new TranslatableComponent("book." + OnTheBrink.MOD_ID +".name.label.spawn_rate");
+
+        Component temperament_combined = temperament_title.copy().append(": ").append(new TranslatableComponent("book." + OnTheBrink.MOD_ID +".name.label.skittish"));
+        Component command_item_combined = command_item_title.copy().append(": ").append(def.command_item);
+        Component activity_combined = activity_title.copy().append(": ").append(def.activity);
+        Component spawn_rate_combined = spawn_rate_title.copy().append(": ").append("N/A");
+
+        textBuilder(poseStack, textXInitial, textYInitial + container_data_y + line_spacing, smallText, temperament_combined, textColor );
+        textBuilder(poseStack, textXInitial, textYInitial + container_data_y + line_spacing + 5, smallText, command_item_combined, textColor );
+        textBuilder(poseStack, textXInitial, textYInitial + container_data_y + line_spacing + 10, smallText, activity_combined, textColor );
+        textBuilder(poseStack, textXInitial, textYInitial + container_data_y + line_spacing + 15, smallText, spawn_rate_combined, textColor );
+
+
+
 
 
     }

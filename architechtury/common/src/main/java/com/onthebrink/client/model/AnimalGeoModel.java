@@ -1,10 +1,8 @@
 package com.onthebrink.client.model;
 
 import com.onthebrink.OnTheBrink;
-import com.onthebrink.entity.animal.base.AnimalAnimatable;
 import com.onthebrink.entity.animal.base.AnimalBase;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Mob;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class AnimalGeoModel<T extends AnimalBase > extends AnimatedGeoModel<T> {

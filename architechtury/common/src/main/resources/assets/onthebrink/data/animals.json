@@ -7,7 +7,8 @@
       "size": { "width": 0.25, "height": 0.5 },
       "hp": 4,
       "diet": "piscivore",
-      "activity": "",
+      "activity": "diurnal",
+      "command_item": "stick",
       "colors": {
         "primary": "16171c",
         "secondary": "c5cae3"
