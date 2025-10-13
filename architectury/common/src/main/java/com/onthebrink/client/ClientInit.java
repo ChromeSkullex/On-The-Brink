@@ -5,6 +5,7 @@ import com.onthebrink.block.ModBlocks;
 import com.onthebrink.client.particle.LatexDripParticle;
 import com.onthebrink.client.particle.ModParticles;
 import com.onthebrink.client.renderer.entity.CoconutRenderer;
+import com.onthebrink.client.renderer.entity.RubberBallRenderer;
 import com.onthebrink.entity.ModEntities;
 import com.onthebrink.event.BlowgunZoomEvent;
 import com.onthebrink.item.ModItems;
@@ -54,6 +55,10 @@ public class ClientInit {
     public static void registerEntityRenderers(){
         // Misc
         EntityRendererRegistry.register(ModEntities.COCONUT_ENTITY, CoconutRenderer::new);
+        EntityRendererRegistry.register(ModEntities.RUBBER_BALL_ENTITY, RubberBallRenderer::new);
+
+
+        // Animals (none yet)
     }
 
     public static void registerBlockRenderers(){

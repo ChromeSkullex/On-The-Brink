@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "onthebrink:sago_flour"
+  },
+  "result": "onthebrink:sago_bread",
+  "experience": 0.35,
+  "cookingtime": 200
+}

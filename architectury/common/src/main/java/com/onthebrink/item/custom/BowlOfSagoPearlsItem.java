@@ -15,7 +15,7 @@ import java.util.List;
 public class BowlOfSagoPearlsItem extends Item {
     public BowlOfSagoPearlsItem(Properties properties) {
         super(properties.food(new FoodProperties.Builder()
-                .nutrition(8) // 4 chopsticks
+                .nutrition(10) // 5 chopsticks
                 .saturationMod(14.4f) // golden carrot saturation
                 .build()));
     }

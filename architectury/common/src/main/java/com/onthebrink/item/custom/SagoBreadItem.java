@@ -8,7 +8,7 @@ import net.minecraft.world.item.UseAnim;
 public class SagoBreadItem extends Item {
     public SagoBreadItem(Properties properties) {
         super(properties.food(new FoodProperties.Builder()
-                .nutrition(8) // 4.5 chopsticks
+                .nutrition(8) // 4 chopsticks
                 .saturationMod(12.8f) // cooked beef saturation
                 .build()));
     }

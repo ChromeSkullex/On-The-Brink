@@ -4,12 +4,14 @@ import com.onthebrink.OnTheBrink;
 import com.onthebrink.block.ModBlocks;
 import com.onthebrink.item.custom.*;
 import com.onthebrink.misc.ModCreativeModeTabs;
+import com.onthebrink.misc.dispenser_behaviors.RubberBallDispenserBehavior;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.DispenserBlock;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(OnTheBrink.MOD_ID, Registry.ITEM_REGISTRY);
@@ -37,7 +39,7 @@ public class ModItems {
             () -> new BurntRubberItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS)));
 
     public static final RegistrySupplier<Item> RUBBER_BALL = ITEMS.register("rubber_ball",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(16)));
+            () -> new RubberBallItem(new Item.Properties().tab(ModCreativeModeTabs.TOOLS_AND_INGREDIENTS).stacksTo(16)));
 
     public static final RegistrySupplier<Item> SLEEP_POPPY = ITEMS.register("sleep_poppy",
             () -> new SleepPoppyItem(ModBlocks.SLEEP_POPPY.get(), new Item.Properties().tab(ModCreativeModeTabs.PLANTS)));
@@ -73,5 +75,7 @@ public class ModItems {
     );
     public static void register(){
         ITEMS.register();
+
+        DispenserBlock.registerBehavior(RUBBER_BALL.get(), new RubberBallDispenserBehavior());
     }
 }
