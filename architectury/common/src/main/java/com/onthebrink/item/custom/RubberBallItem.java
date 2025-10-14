@@ -5,16 +5,19 @@ import com.onthebrink.entity.projectiles.RubberBallEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Predicate;
 
@@ -29,15 +32,48 @@ public class RubberBallItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
 
         if (!world.isClientSide) {
-            RubberBallEntity rubberBall = new RubberBallEntity(world, player);
-            rubberBall.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, 1.5f, 1f);
-            world.addFreshEntity(rubberBall);
-            if (!player.getAbilities().instabuild) {
-                stack.shrink(1);
+            double reachDistance = 5.0D;
+            Vec3 eyePosition = player.getEyePosition(1.0F);
+            Vec3 lookVector = player.getLookAngle();
+            Vec3 reachEnd = eyePosition.add(lookVector.scale(reachDistance));
+
+            BlockHitResult hitResult = world.clip(new ClipContext(
+                    eyePosition,
+                    reachEnd,
+                    ClipContext.Block.OUTLINE,
+                    ClipContext.Fluid.NONE,
+                    player
+            ));
+
+            if (player.isCrouching() && hitResult.getType() == HitResult.Type.BLOCK) {
+                Vec3 hitVec = hitResult.getLocation();
+                Vec3 normal = Vec3.atLowerCornerOf(hitResult.getDirection().getNormal());
+
+                double spawnX = Mth.floor(hitVec.x + normal.x * 0.01) + 0.5f;
+                double spawnY = Mth.floor(hitVec.y + normal.y * 0.01) + 0.5f;
+                double spawnZ = Mth.floor(hitVec.z + normal.z * 0.01) + 0.5f;
+
+                RubberBallEntity rubberBall = new RubberBallEntity(world, spawnX, spawnY, spawnZ);
+                rubberBall.setDeltaMovement(0, 0, 0);
+                world.addFreshEntity(rubberBall);
+
+                world.playSound(null, player.blockPosition(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 1.0f, 1.0f);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            }
+            else {
+                RubberBallEntity rubberBall = new RubberBallEntity(world, player);
+                rubberBall.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, 1.5f, 1f);
+                world.addFreshEntity(rubberBall);
+
+                world.playSound(null, player.blockPosition(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1.0f, 1.0f);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
             }
         }
         player.swing(hand, true);
-        world.playSound(null, player.blockPosition(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1.0f, 1.0f);
         return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
     }
 }

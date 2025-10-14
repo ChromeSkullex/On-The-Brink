@@ -6,16 +6,10 @@ import com.onthebrink.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,11 +24,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class RubberBallEntity extends ThrowableItemProjectile {
+
+    private Vec3 lastSafePos = null;
 
     public RubberBallEntity(EntityType<? extends RubberBallEntity> type, Level world) {
         super(type, world);
@@ -59,8 +56,39 @@ public class RubberBallEntity extends ThrowableItemProjectile {
         if (!this.level.isClientSide()) {
             Vec3 velocity = this.getDeltaMovement();
 
-            if (!this.onGround) {
+            if (this.isInWater()) {
+                double buoyancy = 0.05D;
+                double maxUpwardSpeed = 0.2D;
+
+                if (velocity.y < maxUpwardSpeed) {
+                    this.setDeltaMovement(velocity.x * 0.9, velocity.y + buoyancy, velocity.z * 0.9);
+                }
+
+                // water resistance
+                this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
+            } else if (!this.onGround) {
+                // normal gravity
                 this.setDeltaMovement(velocity.x, velocity.y - 0.04D, velocity.z);
+            }
+
+            BlockPos belowPos = this.blockPosition().below();
+            BlockState belowState = this.level.getBlockState(belowPos);
+            BlockState currentState = this.level.getBlockState(this.blockPosition());
+
+            if (belowState.getBlock() == Blocks.HOPPER || currentState.getBlock() == Blocks.HOPPER) {
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(),
+                        SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.5F, 1.0F);
+
+                ItemEntity itemDrop = new ItemEntity(
+                        this.level,
+                        this.getX(),
+                        this.getY(),
+                        this.getZ(),
+                        new ItemStack(ModItems.RUBBER_BALL.get())
+                );
+                this.level.addFreshEntity(itemDrop);
+                this.discard();
+                return;
             }
 
             final double checkDistance = 0.05D;
@@ -83,10 +111,42 @@ public class RubberBallEntity extends ThrowableItemProjectile {
             BlockPos pos = this.blockPosition();
             BlockState state = this.level.getBlockState(pos);
             VoxelShape shape = state.getCollisionShape(this.level, pos);
-            if (!shape.isEmpty() && shape.bounds().contains(this.getX() - pos.getX(), this.getY() - pos.getY(), this.getZ() - pos.getZ())) {
+
+            boolean insideBlock = !shape.isEmpty() &&
+                    shape.bounds().contains(this.getX() - pos.getX(), this.getY() - pos.getY(), this.getZ() - pos.getZ());
+
+            if (insideBlock) {
+                if (this.lastSafePos != null) {
+                    BlockPos safePos = new BlockPos(
+                            Mth.floor(this.lastSafePos.x),
+                            Mth.floor(this.lastSafePos.y),
+                            Mth.floor(this.lastSafePos.z)
+                    );
+
+                    // check if the last safe position is, in fact, still safe
+                    BlockState safeState = this.level.getBlockState(safePos);
+                    VoxelShape safeShape = safeState.getCollisionShape(this.level, safePos);
+                    boolean safe = safeShape.isEmpty() || !safeShape.bounds().contains(
+                            this.lastSafePos.x - safePos.getX(),
+                            this.lastSafePos.y - safePos.getY(),
+                            this.lastSafePos.z - safePos.getZ()
+                    );
+
+                    if (safe) {
+                        this.teleportTo(this.lastSafePos.x, this.lastSafePos.y, this.lastSafePos.z);
+                        this.setDeltaMovement(Vec3.ZERO);
+                        this.hasImpulse = false;
+                        return;
+                    }
+
+                }
+                // if we are still inside a block. *panic*. until we get out.
                 Vec3 center = new Vec3(pos.getX() + 0.5, this.getY(), pos.getZ() + 0.5);
                 Vec3 escapeDir = this.position().subtract(center.scale(-1)).normalize().scale(0.1); // small horizontal push
                 this.setDeltaMovement(escapeDir.x, velocity.y, escapeDir.z);
+            }
+            else {
+                this.lastSafePos = this.position();
             }
 
             this.move(MoverType.SELF, Vec3.ZERO);

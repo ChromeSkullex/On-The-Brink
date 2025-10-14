@@ -15,12 +15,12 @@ public class RubberBallDispenserBehavior extends DefaultDispenseItemBehavior {
 
         if (!world.isClientSide) {
             Direction facing = source.getBlockState().getValue(DispenserBlock.FACING);
-            RubberBallEntity rubberBall = new RubberBallEntity(
-                    world,
-                    source.getPos().getX() + 0.5,
-                    source.getPos().getY() + 0.2,
-                    source.getPos().getZ() + 0.5
-            );
+
+            double x = source.getPos().getX() + 0.5 + facing.getStepX();
+            double y = source.getPos().getY() + 0.5 + facing.getStepY();
+            double z = source.getPos().getZ() + 0.5 + facing.getStepZ();
+
+            RubberBallEntity rubberBall = new RubberBallEntity(world, x, y, z);
 
             rubberBall.shoot(
                     facing.getStepX(),
