@@ -112,6 +112,7 @@ public class RubberBallEntity extends ThrowableItemProjectile {
             BlockState state = this.level.getBlockState(pos);
             VoxelShape shape = state.getCollisionShape(this.level, pos);
 
+            // TODO: check for every sub shape instead of the AABB (accurate collision detection for convex shapes like stairs and cauldrons)
             boolean insideBlock = !shape.isEmpty() &&
                     shape.bounds().contains(this.getX() - pos.getX(), this.getY() - pos.getY(), this.getZ() - pos.getZ());
 
@@ -126,6 +127,8 @@ public class RubberBallEntity extends ThrowableItemProjectile {
                     // check if the last safe position is, in fact, still safe
                     BlockState safeState = this.level.getBlockState(safePos);
                     VoxelShape safeShape = safeState.getCollisionShape(this.level, safePos);
+
+                    // TODO: check for every sub shape instead of the AABB
                     boolean safe = safeShape.isEmpty() || !safeShape.bounds().contains(
                             this.lastSafePos.x - safePos.getX(),
                             this.lastSafePos.y - safePos.getY(),
