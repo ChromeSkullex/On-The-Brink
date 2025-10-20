@@ -51,6 +51,7 @@ public class ModBlocks {
 
     public static final RegistrySupplier<RotatedPillarBlock> CRACKED_BONE_BLOCK = registerBlock("cracked_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), ModCreativeModeTabs.BUILDING);
 
+    public static final RegistrySupplier<WallBlock> BONE_WALL = registerBlock("bone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
 
 
     // ------ NATURE ------

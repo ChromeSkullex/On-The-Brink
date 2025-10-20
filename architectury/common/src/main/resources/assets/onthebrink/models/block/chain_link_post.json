@@ -2,6 +2,6 @@
   "parent": "minecraft:block/template_glass_pane_post",
   "textures": {
     "pane": "onthebrink:block/chain_link",
-    "edge": "minecraft:block/iron_bars"
+    "edge": "onthebrink:block/empty"
   }
 }
