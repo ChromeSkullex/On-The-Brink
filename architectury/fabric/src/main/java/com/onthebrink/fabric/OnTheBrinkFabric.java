@@ -1,6 +1,7 @@
 package com.onthebrink.fabric;
 
 import com.onthebrink.client.ClientInit;
+import com.onthebrink.item.ModItems;
 import com.onthebrink.misc.MiscRegistryFabric;
 import com.onthebrink.world.feature.ModPlacedFeatures;
 import com.onthebrink.world.feature.configuration.ModConfiguredFeatures;
@@ -26,6 +27,8 @@ public final class OnTheBrinkFabric implements ModInitializer {
 
         // Run our common setup.
         OnTheBrink.init();
+
+        ModItems.registerDispenserBehaviors();
 
         ModPlacedFeatures.register();
 

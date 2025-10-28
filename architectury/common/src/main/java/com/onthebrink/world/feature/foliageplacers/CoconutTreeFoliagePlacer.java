@@ -30,16 +30,15 @@ public class CoconutTreeFoliagePlacer extends FoliagePlacer {
         if(Platform.isFabric()) {
             return MiscRegistry.COCONUT_TREE_FOLIAGE_PLACER;
         }
-        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
+        return MiscRegistry.COCONUT_TREE_FOLIAGE_PLACER;
     }
 
     @Override
     protected void createFoliage(LevelSimulatedReader reader, BiConsumer<BlockPos, BlockState> leavesPlacer, Random random, TreeConfiguration config, int trunkHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
-        BlockPos top = attachment.pos().above(offset); // Start at the top of the trunk
+        BlockPos top = attachment.pos().above(offset);
 
-        List<BlockPos> leaves = List.of();
+        List<BlockPos> leaves;
 
-        // randomly choose between variants
         if (random.nextFloat() < 0.5f){
             leaves = LeafData.COCONUT_TREE_0;
         }

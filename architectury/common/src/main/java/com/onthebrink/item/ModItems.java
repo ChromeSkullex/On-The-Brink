@@ -5,9 +5,11 @@ import com.onthebrink.block.ModBlocks;
 import com.onthebrink.item.custom.*;
 import com.onthebrink.misc.ModCreativeModeTabs;
 import com.onthebrink.misc.dispenser_behaviors.RubberBallDispenserBehavior;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -75,7 +77,9 @@ public class ModItems {
     );
     public static void register(){
         ITEMS.register();
+    }
 
+    public static void registerDispenserBehaviors() {
         DispenserBlock.registerBehavior(RUBBER_BALL.get(), new RubberBallDispenserBehavior());
     }
 }

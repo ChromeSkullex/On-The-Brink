@@ -24,12 +24,13 @@ public class WoodsCycadFoliagePlacer extends FoliagePlacer {
         super(radius, offset);
     }
 
+    // I have literally no idea what this is for
     @Override
     protected FoliagePlacerType<?> type() {
         if(Platform.isFabric()) {
             return MiscRegistry.WOODS_CYCAD_FOLIAGE_PLACER;
         }
-        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER; // doesn't seem to ever trigger, I'm kinda confused
+        return MiscRegistry.WOODS_CYCAD_FOLIAGE_PLACER;
     }
 
     @Override

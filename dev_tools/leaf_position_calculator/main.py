@@ -18,7 +18,7 @@ def generate_block_positions_from_folder(input_folder="input"):
 
         for layer_num in layers:
             image_path = os.path.join(input_folder, f"{layer_num}.png")
-            print(f"\n\\\\ Layer {layer_num}")
+            print(f"\n// Layer {layer_num}")
 
             img = Image.open(image_path)
             width, height = img.size

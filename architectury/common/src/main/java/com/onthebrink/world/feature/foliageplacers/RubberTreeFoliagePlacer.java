@@ -29,12 +29,12 @@ public class RubberTreeFoliagePlacer extends FoliagePlacer {
         if(Platform.isFabric()) {
             return MiscRegistry.RUBBER_TREE_FOLIAGE_PLACER;
         }
-        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
+        return MiscRegistry.RUBBER_TREE_FOLIAGE_PLACER;
     }
 
     @Override
     protected void createFoliage(LevelSimulatedReader reader, BiConsumer<BlockPos, BlockState> leavesPlacer, Random random, TreeConfiguration config, int trunkHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
-        BlockPos top = attachment.pos().above(offset); // Start at the top of the trunk
+        BlockPos top = attachment.pos().above(offset);
 
         for (BlockPos leafPos : LeafData.RUBBER_TREE_0) {
             placeLeavesIfAllowed(reader, leavesPlacer, random, config, top.offset(leafPos));
