@@ -30,7 +30,9 @@ public class CoconutTreeFoliagePlacer extends FoliagePlacer {
         if(Platform.isFabric()) {
             return MiscRegistry.COCONUT_TREE_FOLIAGE_PLACER;
         }
-        return MiscRegistry.COCONUT_TREE_FOLIAGE_PLACER;
+        // for some reason we can't return the real foliage placer here (i.e. on forge)
+        // or else it gives a NullPointerException
+        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
     }
 
     @Override
