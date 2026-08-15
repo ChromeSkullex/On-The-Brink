@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "onthebrink:block/dragon_blood_tree_log_top",
+    "side": "onthebrink:block/dragon_blood_tree_log_side"
+  }
+}

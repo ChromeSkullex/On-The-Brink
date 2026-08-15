@@ -51,7 +51,7 @@ public class ModBlocks {
 
     public static final RegistrySupplier<RotatedPillarBlock> CRACKED_BONE_BLOCK = registerBlock("cracked_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), ModCreativeModeTabs.BUILDING);
 
-    public static final RegistrySupplier<WallBlock> BONE_WALL = registerBlock("bone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_MISC);
+    public static final RegistrySupplier<WallBlock> BONE_WALL = registerBlock("bone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), ModCreativeModeTabs.BUILDING);
 
 
     // ------ NATURE ------
@@ -81,6 +81,12 @@ public class ModBlocks {
 
 
     // ------- TREES -------
+
+    // DRAGON BLOOD TREE
+
+    public static final RegistrySupplier<RotatedPillarBlock> DRAGON_BLOOD_TREE_LOG = registerBlock("dragon_blood_tree_log", () -> FlammableRotatedPillarBlock.get(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)), ModCreativeModeTabs.TREES_AND_WOOD);
+    public static final RegistrySupplier<LeavesBlock> DRAGON_BLOOD_TREE_LEAVES = registerBlock("dragon_blood_tree_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), ModCreativeModeTabs.TREES_AND_WOOD);
+
 
     // RUBBER TREE
 
@@ -135,6 +141,8 @@ public class ModBlocks {
 
     public static final RegistrySupplier<DoorBlock> WOODS_CYCAD_DOOR = registerBlock("woods_cycad_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR)), ModCreativeModeTabs.TREES_AND_WOOD);
 
+    public static final RegistrySupplier<TrapDoorBlock> WOODS_CYCAD_TRAPDOOR = registerBlock("woods_cycad_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)), ModCreativeModeTabs.TREES_AND_WOOD);
+
     public static final RegistrySupplier<FenceBlock> WOODS_CYCAD_FENCE = registerBlock("woods_cycad_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)), ModCreativeModeTabs.TREES_AND_WOOD);
 
     public static final RegistrySupplier<FenceGateBlock> WOODS_CYCAD_FENCE_GATE = registerBlock("woods_cycad_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)), ModCreativeModeTabs.TREES_AND_WOOD);
@@ -142,9 +150,6 @@ public class ModBlocks {
     public static final RegistrySupplier<SlabBlock> WOODS_CYCAD_SLAB = registerBlock("woods_cycad_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)), ModCreativeModeTabs.TREES_AND_WOOD);
 
     public static final RegistrySupplier<StairBlock> WOODS_CYCAD_STAIRS = registerBlock("woods_cycad_stairs", () -> new StairBlock(ModBlocks.WOODS_CYCAD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)), ModCreativeModeTabs.TREES_AND_WOOD);
-
-    public static final RegistrySupplier<TrapDoorBlock> WOODS_CYCAD_TRAPDOOR = registerBlock("woods_cycad_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)), ModCreativeModeTabs.TREES_AND_WOOD);
-
 
 
     public static <T extends Block> RegistrySupplier<T> registerBlockNoItem(String name, Supplier<T> block) {

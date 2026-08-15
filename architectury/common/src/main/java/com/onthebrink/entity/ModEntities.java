@@ -21,7 +21,7 @@ public class ModEntities {
 
     public static final RegistrySupplier<EntityType<RubberBallEntity>> RUBBER_BALL_ENTITY = ENTITIES.register("rubber_ball",
             () -> EntityType.Builder.<RubberBallEntity>of(RubberBallEntity::new, MobCategory.MISC)
-                    .sized(0.6F, 0.6F)
+                    .sized(0.8F, 0.8F)
                     .clientTrackingRange(12)
                     .updateInterval(1)
                     .build("rubber_ball"));
